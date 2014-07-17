@@ -3,7 +3,7 @@
 ## Import project in Eclipse
 
 1. Import -> Maven -> Existing Maven projects
-2. Browse -> .. Finish
+2. Browse -> ... Finish
 
 ## Run project
 
