@@ -1,7 +1,7 @@
 WPUtil = {
-  basePath: '/web-proceedings',
+  basePath: '/roommates',
   ctx: function(path) {
-    return "/web-proceedings" + path;
+    return "/roommates" + path;
   }
 
 };

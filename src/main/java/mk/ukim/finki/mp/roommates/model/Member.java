@@ -4,8 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="members")
+@Table(name = "members")
 public class Member extends BaseEntity {
+
+	private String email;
+
+	private String password;
 
 	public String getEmail() {
 		return email;
@@ -22,8 +26,4 @@ public class Member extends BaseEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	private String email;
-	
-	private String password;
 }

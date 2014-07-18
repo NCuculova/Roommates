@@ -6,9 +6,17 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="flats")
-public class Flat extends BaseEntity{
-	
+@Table(name = "flats")
+public class Flat extends BaseEntity {
+
+	private String location;
+
+	private String address;
+
+	private int area;
+
+	private Blob image;
+
 	public String getLocation() {
 		return location;
 	}
@@ -41,11 +49,4 @@ public class Flat extends BaseEntity{
 		this.image = image;
 	}
 
-	private String location;
-	
-	private String address;
-	
-	private int area;
-	
-	private Blob  image;
 }

@@ -1,18 +1,16 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-var WP = angular.module('WP', [ 'WP.filters', 'WP.services', 'WP.directives' ]);
+var RM = angular.module('RM', [ 'RM.services', 'RM.directives', 'RM.dependencies' ]);
 
-WP.config([
+RM.config([
 		'$routeProvider',
-		'$translateProvider',
 		'$httpProvider',
 		'$locationProvider',
-		function($routeProvider, $translateProvider, $httpProvider,
-				$locationProvider, toaster) {
-
+		function($routeProvider, $httpProvider,
+				$locationProvider) {
 		} ]);
 
-WP.run(function($rootScope, $location, $cookieStore) {
+RM.run(function($rootScope, $location) {
 
 });

@@ -43,8 +43,8 @@
 
 
 			</property>
-			<property name="persistenceUnitName" value="webproceedings" />
-			<property name="packagesToScan" value="org.ictact.webproceedings" />
+			<property name="persistenceUnitName" value="roommates" />
+			<property name="packagesToScan" value="mk.ukim.finki.mp.roommates" />
 		</bean>
 
 		<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"

@@ -15,5 +15,10 @@
 6. Profiles: pom.xml 
 7. Run (this saves the configuration)
 
+## MySQL Settings (in data-access.properties)
 
+* jdbc.driverClassName=com.mysql.jdbc.Driver
+* jdbc.url=jdbc:mysql://localhost:3306/roommates?useUnicode=true&characterEncoding=UTF-8
+* jdbc.username=root
+* jdbc.password=admin
 
