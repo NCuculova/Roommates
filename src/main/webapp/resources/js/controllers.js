@@ -12,10 +12,10 @@ RM.controller('HeaderController', [ '$scope', '$location',
 
 RM.controller('MembersController', [ '$scope', 'Member','toaster',
 		function($scope, Member,toaster) {
-			$scope.member = {};// se kreira prazen objekt
+			$scope.member = {};
 			$scope.saveNewMember = function() {
-				$scope.member = {};// se prazni formata, na call-back funkcija na signin 
-				Member.save($scope.member);// save vo baza
+				Member.save($scope.member);
+				$scope.member = {};
 				toaster.pop('success', "You are signed in");
 			};
 		} ]);
