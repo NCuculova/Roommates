@@ -1,6 +1,7 @@
 package mk.ukim.finki.mp.roommates.model;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -15,7 +16,7 @@ public class Member extends BaseEntity {
 
 	@NotEmpty
 	private String password;
-	
+
 	@OneToOne
 	private MemberProfile profile;
 
@@ -42,4 +43,5 @@ public class Member extends BaseEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 }
