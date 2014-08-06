@@ -8,3 +8,7 @@ angular.module('RM.services', [ 'chieffancypants.loadingBar' ]).value(
 RM.factory('Member', [ '$resource', function($resource) {
 	return $resource(WPUtil.ctx('/data/rest/members/:id'), {});
 } ]);
+
+RM.factory('MemberProfile', [ '$resource', function($resource) {
+	return $resource(WPUtil.ctx('/data/rest/memberProfile/:id'), {});
+} ]);

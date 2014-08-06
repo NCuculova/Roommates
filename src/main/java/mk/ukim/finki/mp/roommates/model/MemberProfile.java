@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Table(name = "member_profile")
 public class MemberProfile extends BaseEntity{
 	
-	private int age;
+	private Date dateOfBirth;
 	
 	private String sex;
 	
@@ -24,12 +24,12 @@ public class MemberProfile extends BaseEntity{
 	
 	private String details;
 
-	public int getAge() {
-		return age;
+	public Date getDateOfBirth() {
+		return dateOfBirth;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public String getSex() {

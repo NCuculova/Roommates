@@ -5,5 +5,7 @@ RM.config([ '$routeProvider', '$locationProvider',
 			$routeProvider.when('/members', {
 				templateUrl : 'views/member.html',
 				controller: 'MembersController'
+			}).when('/memberProfile',{
+				templateUrl : 'views/memberProfile.html'
 			});
 		} ]);
