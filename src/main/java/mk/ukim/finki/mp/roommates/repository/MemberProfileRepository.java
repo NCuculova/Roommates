@@ -1,3 +1,4 @@
+
 package mk.ukim.finki.mp.roommates.repository;
 
 import mk.ukim.finki.mp.roommates.model.MemberProfile;

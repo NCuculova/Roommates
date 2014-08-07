@@ -8,4 +8,3 @@ RM.config([ '$routeProvider', '$locationProvider',
 			}).when('/memberProfile',{
 				templateUrl : 'views/memberProfile.html'
 			});
-		} ]);
