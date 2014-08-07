@@ -53,3 +53,4 @@ target/*
 /target/
 /target/
 /target/
+.springBeans

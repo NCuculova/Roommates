@@ -2,27 +2,34 @@ package mk.ukim.finki.mp.roommates.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "member_profile")
 public class MemberProfile extends BaseEntity{
 	
-	private int age;
+	private Date dateOfBirth;
 	
 	private String sex;
 	
 	private Date moveDate;
 	
-	private String tags;
-	
 	private String occupation;
 	
+	private boolean smoker;
 	
-	public int getAge() {
-		return age;
+	private boolean pets;
+	
+	private String details;
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public String getSex() {
@@ -41,14 +48,6 @@ public class MemberProfile extends BaseEntity{
 		this.moveDate = moveDate;
 	}
 
-	public String getTags() {
-		return tags;
-	}
-
-	public void setTags(String tags) {
-		this.tags = tags;
-	}
-
 	public String getOccupation() {
 		return occupation;
 	}
@@ -57,5 +56,28 @@ public class MemberProfile extends BaseEntity{
 		this.occupation = occupation;
 	}
 
+	public boolean isSmoker() {
+		return smoker;
+	}
 
+	public void setSmoker(boolean smoker) {
+		this.smoker = smoker;
+	}
+
+	public boolean isPets() {
+		return pets;
+	}
+
+	public void setPets(boolean pets) {
+		this.pets = pets;
+	}
+
+	public String getDetails() {
+		return details;
+	}
+
+	public void setDetails(String details) {
+		this.details = details;
+	}
+	
 }
