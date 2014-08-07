@@ -2,21 +2,23 @@ package mk.ukim.finki.mp.roommates.model;
 
 import java.util.Date;
 
-import javax.persistence.OneToOne;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-public class MemberProfile extends BaseEntity{
-	
+@Entity
+@Table(name = "member_profiles")
+public class MemberProfile extends BaseEntity {
+
 	private int age;
-	
+
 	private String sex;
-	
+
 	private Date moveDate;
-	
+
 	private String tags;
-	
+
 	private String occupation;
-	
-	
+
 	public int getAge() {
 		return age;
 	}
@@ -56,6 +58,5 @@ public class MemberProfile extends BaseEntity{
 	public void setOccupation(String occupation) {
 		this.occupation = occupation;
 	}
-
 
 }
