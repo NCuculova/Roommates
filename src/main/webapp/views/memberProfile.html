@@ -41,9 +41,10 @@
 				<label class="col-md-2 control-label">I am a </label>
 				<div class="col-md-10">
 					<select class="form-control" ui-select2
-						data-placeholder="-- Select type --">
-						<option>Non-smoker</option>
-						<option>Smoker</option>
+						data-placeholder="-- Select type --" ng-model="memberProfile">
+						<option value=""></option>
+						<option value="nonsmoker">Non-smoker</option>
+						<option value="smoker">Smoker</option>
 					</select>
 				</div>
 			</div>
@@ -51,7 +52,8 @@
 				<label class="col-md-2 control-label">I have </label>
 				<div class="col-md-10">
 					<select class="form-control" ui-select2
-						data-placeholder="-- Select type --">
+						data-placeholder="-- Select type --" ng-model="memberProfile">
+						<option value=""></option>
 						<option>No-pets</option>
 						<option>Pets</option>
 					</select>
