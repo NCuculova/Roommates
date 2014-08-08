@@ -2,10 +2,15 @@
 
 RM.config([ '$routeProvider', '$locationProvider',
 		function($routeProvider, $locationProvider) {
-			$routeProvider.when('/members', {
-				templateUrl : 'views/member.html',
-				controller: 'MembersController'
-			}).when('/memberProfile',{
+			$routeProvider.when('/login', {
+				templateUrl : 'views/memberLogin.html',
+				controller : 'MemberLoginController',
+				publicPage : true
+			}).when('/memberProfile', {
 				templateUrl : 'views/memberProfile.html'
+			}).when('/signup', {
+				templateUrl : 'views/signup.html',
+				controller : 'SignupController',
+				publicPage : true
 			});
 		} ]);

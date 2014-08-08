@@ -13,4 +13,8 @@ public interface MembersService {
 	public Member findById(Long id);
 
 	public void delete(Long id);
+
+	public Member findByEmail(String email);
+
+	public Member findByEmailAndPassword(String email, String password);
 }

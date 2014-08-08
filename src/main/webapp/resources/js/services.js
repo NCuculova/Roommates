@@ -6,7 +6,12 @@ angular.module('RM.services', [ 'chieffancypants.loadingBar' ]).value(
 		'version', '0.1');
 
 RM.factory('Member', [ '$resource', function($resource) {
-	return $resource(WPUtil.ctx('/data/rest/members/:id'), {});
+	return $resource(WPUtil.ctx('/data/rest/members/:id'), {}, {
+		'login' : {
+			method : 'POST',
+			url : WPUtil.ctx('/data/rest/members/login')
+		}
+	});
 } ]);
 
 RM.factory('MemberProfile', [ '$resource', function($resource) {

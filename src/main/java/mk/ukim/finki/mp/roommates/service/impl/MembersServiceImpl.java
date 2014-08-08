@@ -36,4 +36,14 @@ public class MembersServiceImpl implements MembersService {
 		memberRepository.delete(id);
 	}
 
+	@Override
+	public Member findByEmail(String email) {
+		return memberRepository.findByEmail(email);
+	}
+
+	@Override
+	public Member findByEmailAndPassword(String email, String password) {
+		return memberRepository.findByEmailAndPassword(email, password);
+	}
+
 }

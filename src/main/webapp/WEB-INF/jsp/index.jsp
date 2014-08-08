@@ -50,7 +50,9 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li ng-class="{ active: isActive('/members')}"><a href="#/members">Login</a></li>
+            <li ng-class="{ active: isActive('/login')}"><a href="#/login">Log In</a></li>
+            <li ng-class="{ active: isActive('/signup')}"><a href="#/signup">Sign Up</a></li>
+            
           </ul>
         </div><!--/.nav-collapse -->
       </div>

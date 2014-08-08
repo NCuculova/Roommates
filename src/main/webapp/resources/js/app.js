@@ -12,5 +12,11 @@ RM.config([
 		} ]);
 
 RM.run(function($rootScope, $location) {
+	$rootScope.$on('$routeChangeStart', function(event, next, current){
+		console.log(next);
+		if (next && !next.publicPage){
+			$location.path('/login');
+		}
+	});
 
 });

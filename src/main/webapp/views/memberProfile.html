@@ -6,19 +6,20 @@
 		<form class="form-horizontal" role="form">
 			<div class="form-group">
 				<label class="control-label col-md-4">I am a </label>
-				<div class="btn-group col-md-8" ng-model="button.radio"
+				<div class="btn-group col-md-8" ng-model="memberProfile.sex"
 					bs-radio-group>
 					<label class="btn btn-default"><input type="radio"
-						class="btn btn-default" value="0">Male</label> <label
+						class="btn btn-default" value="true" >Male</label> <label
 						class="btn btn-default"><input type="radio"
-						class="btn btn-default" value="1">Female</label>
+						class="btn btn-default" value="false" >Female</label>
 				</div>
 			</div>
 			<div class=" form-group">
 				<label class="col-md-4 control-label">My occupation is </label>
 				<div class="col-md-8">
 					<input type="text" class="form-control" id="occupation"
-						placeholder="Enter your occupation">
+						placeholder="Enter your occupation"
+						ng-model="memberProfile.occupation">
 				</div>
 			</div>
 			<div class="form-group">
@@ -26,7 +27,7 @@
 					birthdate is on </label>
 				<div class="col-md-10">
 					<input type="date" class="form-control" id="dateOfBirth"
-						placeholder="Enter date">
+						placeholder="Enter date" ng-model="memberProfile.dateOfBirth">
 				</div>
 			</div>
 			<div class="form-group">
@@ -34,26 +35,22 @@
 					to move in on </label>
 				<div class="col-md-10">
 					<input type="date" class="form-control" id="moveDate"
-						placeholder="Enter date">
+						placeholder="Enter date" ng-model="memberProfile.moveDate">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-md-2 control-label">I am a </label>
 				<div class="col-md-10">
-					<select class="form-control" ui-select2
-						data-placeholder="-- Select type --" ng-model="memberProfile">
-						<option value=""></option>
-						<option value="nonsmoker">Non-smoker</option>
-						<option value="smoker">Smoker</option>
+					<select class="form-control" ui-select2	ng-model="memberProfile.smoker">
+						<option value="false">Non-smoker</option>
+						<option value="true">Smoker</option>
 					</select>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-md-2 control-label">I have </label>
 				<div class="col-md-10">
-					<select class="form-control" ui-select2
-						data-placeholder="-- Select type --" ng-model="memberProfile">
-						<option value=""></option>
+					<select class="form-control" ui-select2 ng-model="memberProfile.pets">
 						<option>No-pets</option>
 						<option>Pets</option>
 					</select>
@@ -63,7 +60,8 @@
 				<label class="col-md-2 control-label">Any more details ... </label>
 				<div class="col-md-10">
 					<textarea class="form-control " rows="3"
-						placeholder="Enter more details about yourself"></textarea>
+						placeholder="Enter more details about yourself"
+						ng-model="memberProfile.details"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
