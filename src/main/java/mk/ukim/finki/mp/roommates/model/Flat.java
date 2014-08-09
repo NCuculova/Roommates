@@ -5,7 +5,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "flat")
+@Table(name = "flats")
 public class Flat extends BaseEntity {
 	
 	@ManyToOne
@@ -17,7 +17,7 @@ public class Flat extends BaseEntity {
 
 	private String address;
 
-	private float area;
+	private int area;
 	
 	private String heating;
 	
@@ -49,11 +49,11 @@ public class Flat extends BaseEntity {
 		this.address = address;
 	}
 
-	public float getArea() {
+	public int getArea() {
 		return area;
 	}
 
-	public void setArea(float area) {
+	public void setArea(int area) {
 		this.area = area;
 	}
 

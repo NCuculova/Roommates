@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/data/rest/flat")
+@RequestMapping("/data/rest/flats")
 public class FlatResource {
 
 	@Autowired

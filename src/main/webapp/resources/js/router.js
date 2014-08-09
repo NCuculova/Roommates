@@ -16,5 +16,5 @@ RM.config([ '$routeProvider', '$locationProvider',
 				templateUrl : 'views/addFlat.html',
 				controller : 'FlatController',
 				publicPage : true
-			});
+			}).otherwise({redirectTo: '/'});
 		} ]);
