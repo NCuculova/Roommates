@@ -17,8 +17,7 @@ RM.controller('MemberLoginController', [ '$scope', 'Member', 'toaster',
 				Member.login($scope.member, function(data){
 					console.log(data);
 					if(data.success){
-						
-						
+												
 					}
 					else{
 						toaster.pop('error', "Invalid login!");
