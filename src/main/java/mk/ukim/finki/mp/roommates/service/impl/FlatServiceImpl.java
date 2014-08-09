@@ -19,7 +19,6 @@ public class FlatServiceImpl  implements FlatService{
 	@Override
 	public void save(Flat entity) {
 		flatRepository.save(entity);
-		
 	}
 
 	@Override

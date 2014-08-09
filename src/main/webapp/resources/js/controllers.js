@@ -42,3 +42,20 @@ RM.controller('SignupController', [ '$scope', 'Member', 'toaster',
 				});
 			};
 		} ]);
+
+RM.controller('FlatController', [ '$scope', 'Flat', 'toaster',
+                            		function($scope, Flat, toaster) {
+                            			$scope.success = true;
+                            			$scope.flat = {};
+                            			$scope.saveNewFlat = function() {
+                            				Flat.save($scope.flat, function(data) {
+                            					$scope.message = data.message;
+                            					$scope.success = data.success;
+                            					if(data.success) {
+                            						toaster.pop('success', "New flat added");						
+                            					} else {
+                            						toaster.pop('error', data.message);
+                            					}
+                            				});
+                            			};
+                            		} ]);

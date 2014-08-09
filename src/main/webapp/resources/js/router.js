@@ -12,5 +12,9 @@ RM.config([ '$routeProvider', '$locationProvider',
 				templateUrl : 'views/signup.html',
 				controller : 'SignupController',
 				publicPage : true
+			}).when('/addFlat', {
+				templateUrl : 'views/addFlat.html',
+				controller : 'FlatController',
+				publicPage : true
 			});
 		} ]);
