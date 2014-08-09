@@ -80,13 +80,13 @@ public class Flat extends BaseEntity {
 	public void setNumRooms(int numRooms) {
 		this.numRooms = numRooms;
 	}
-
-	/*public Blob getImage() {
+/*
+	public Blob getImage() {
 		return image;
 	}
 
 	public void setImage(Blob image) {
 		this.image = image;
-	}*/
-
+	}
+*/
 }
