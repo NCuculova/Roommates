@@ -1,5 +1,9 @@
 package mk.ukim.finki.mp.roommates.web.rest;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -26,22 +30,22 @@ public class FlatResource {
 		return entity;
 	}
 
-	/*
+	
 	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
-	public List<MemberProfile> getAll() {
-		Collection<MemberProfile> memberProfiles = service.findAll();
-		return new ArrayList<MemberProfile>(memberProfiles);
+	public List<Flat> getAll() {
+		Collection<Flat> flats = service.findAll();
+		return new ArrayList<Flat>(flats);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-	public MemberProfile get(@PathVariable Long id, HttpServletResponse response) {
-		MemberProfile memberProfile = service.findById(id);
-		if (memberProfile == null) {
+	public Flat get(@PathVariable Long id, HttpServletResponse response) {
+		Flat flat = service.findById(id);
+		if (flat == null) {
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 		}
-		return memberProfile;
+		return flat;
 	}
-	 */	
+	 
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
 	public void delete(@PathVariable Long id, HttpServletResponse response) {

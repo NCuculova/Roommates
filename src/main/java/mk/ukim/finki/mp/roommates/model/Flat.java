@@ -1,7 +1,5 @@
 package mk.ukim.finki.mp.roommates.model;
 
-import java.sql.Blob;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
