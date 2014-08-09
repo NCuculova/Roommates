@@ -44,18 +44,20 @@ RM.controller('SignupController', [ '$scope', 'Member', 'toaster',
 		} ]);
 
 RM.controller('FlatController', [ '$scope', 'Flat', 'toaster',
-                            		function($scope, Flat, toaster) {
-                            			$scope.success = true;
-                            			$scope.flat = {};
-                            			$scope.saveNewFlat = function() {
-                            				Flat.save($scope.flat, function(data) {
-                            					$scope.message = data.message;
-                            					$scope.success = data.success;
-                            					if(data.success) {
-                            						toaster.pop('success', "New flat added");						
-                            					} else {
-                            						toaster.pop('error', data.message);
-                            					}
-                            				});
-                            			};
-                            		} ]);
+       function($scope, Flat, toaster) {
+       		$scope.success = true;
+            $scope.flat = {};
+            $scope.member = null;
+            //treba da se stavi logikata za member tuka !!! za da se zeme od logiraniot i da se stavi vo baza !!!
+            $scope.saveNewFlat = function() {
+            	Flat.save($scope.flat, function(data) {
+                	$scope.message = data.message;
+                	$scope.success = data.success;
+                    	if(data.success) {
+                    		toaster.pop('success', "New flat added!");						
+                        } else {
+                        	toaster.pop('error', data.message);
+                        }
+                	});
+               	};
+         	} ]);

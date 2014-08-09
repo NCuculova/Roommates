@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "flats")
+@Table(name = "flat")
 public class Flat extends BaseEntity {
 	
 	@ManyToOne
@@ -19,13 +19,13 @@ public class Flat extends BaseEntity {
 
 	private String address;
 
-	private int area;
+	private float area;
 	
-	private int heating;
+	private String heating;
 	
 	private int numRooms;
 
-	private Blob image;
+	//private Blob image;
 
 	public String getCity() {
 		return city;
@@ -51,19 +51,27 @@ public class Flat extends BaseEntity {
 		this.address = address;
 	}
 
-	public int getArea() {
+	public float getArea() {
 		return area;
 	}
 
-	public void setArea(int area) {
+	public void setArea(float area) {
 		this.area = area;
 	}
 
-	public int getHeating() {
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
+
+	public String getHeating() {
 		return heating;
 	}
 
-	public void setHeating(int heating) {
+	public void setHeating(String heating) {
 		this.heating = heating;
 	}
 
@@ -75,12 +83,12 @@ public class Flat extends BaseEntity {
 		this.numRooms = numRooms;
 	}
 
-	public Blob getImage() {
+	/*public Blob getImage() {
 		return image;
 	}
 
 	public void setImage(Blob image) {
 		this.image = image;
-	}
+	}*/
 
 }
