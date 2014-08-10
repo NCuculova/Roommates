@@ -29,7 +29,6 @@ public class FlatResource {
 		service.save(entity);
 		return entity;
 	}
-
 	
 	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
 	public List<Flat> getAll() {
@@ -45,7 +44,6 @@ public class FlatResource {
 		}
 		return flat;
 	}
-	 
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
 	public void delete(@PathVariable Long id, HttpServletResponse response) {

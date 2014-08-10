@@ -55,10 +55,8 @@ RM.controller('SignupController', [ '$scope', 'Member', 'toaster',
 			};
 		} ]);
 
-
 RM.controller('MemberProfileController', [ '$scope', '$rootScope',
-		'MemberProfile', 'toaster',
-		function($scope, $rootScope, MemberProfile, toaster) {
+		'MemberProfile', function($scope, $rootScope, MemberProfile) {
 			$scope.memberProfile = {};
 			// wait for the event 'memberLoaded'
 			$scope.$on('memberLoaded', function() {
@@ -73,21 +71,11 @@ RM.controller('MemberProfileController', [ '$scope', '$rootScope',
 			};
 		} ]);
 
-RM.controller('FlatController', [ '$scope', 'Flat', 'toaster',
-       function($scope, Flat, toaster) {
-       		$scope.success = true;
-            $scope.flat = {};
-            //treba da se stavi logikata za member tuka !!! za da se zeme od logiraniot i da se stavi vo baza !!!
-            $scope.saveNewFlat = function() {
-            	Flat.save($scope.flat, function(data) {
-                	$scope.message = data.message;
-                	$scope.success = data.success;
-                    	if(data.success) {
-                    		toaster.pop('success', "New flat added!");						
-                        } else {
-                        	toaster.pop('error', data.message);
-                        }
-                	});
-               	};
-         	} ]);
-
+RM.controller('FlatController', [ '$scope','$rootScope', 'Flat', 'toaster',
+		function($scope, $rootScope, Flat, toaster) {
+			$scope.flat = {};
+			$scope.saveNewFlat = function() {
+				$scope.flat.member = $rootScope.member;
+				Flat.save($scope.flat);
+			};
+		} ]);

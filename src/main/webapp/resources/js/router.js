@@ -15,7 +15,6 @@ RM.config([ '$routeProvider', '$locationProvider',
 				publicPage : true
 			}).when('/addFlat', {
 				templateUrl : 'views/addFlat.html',
-				controller : 'FlatController',
-				publicPage : true
+				controller : 'FlatController'
 			}).otherwise({redirectTo: '/'});
 		} ]);

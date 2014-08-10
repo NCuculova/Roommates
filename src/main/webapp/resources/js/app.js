@@ -31,8 +31,6 @@ RM.run(function($rootScope, $location, $cookieStore,toaster, Member) {
 				// Member has valid cookie
 				if(data.success) {
 					$rootScope.member = data.member;
-					//redirect to memberProfile
-					$location.path('/memberProfile');
 					//dispatch the event 'memberLoaded' to all child scopes
 					$rootScope.$broadcast('memberLoaded');
 				} else {

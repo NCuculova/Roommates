@@ -26,3 +26,13 @@ RM.factory('MemberProfile', [ '$resource', function($resource) {
 		}
 	});
 } ]);
+
+RM.factory('Flat', [ '$resource', function($resource) {
+	return $resource(WPUtil.ctx('/data/rest/flats/:id'), {},{
+		'findByMemberId':{
+			method : 'GET',
+			isArray: true,
+			url : WPUtil.ctx('/data/rest/flats/member/:id')
+		}
+	});
+} ]);
