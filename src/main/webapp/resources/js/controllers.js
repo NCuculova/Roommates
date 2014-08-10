@@ -75,7 +75,13 @@ RM.controller('FlatController', [ '$scope','$rootScope', 'Flat', 'toaster',
 		function($scope, $rootScope, Flat, toaster) {
 			$scope.flat = {};
 			$scope.saveNewFlat = function() {
+				if($scope.flat.area == null || $scope.flat.heating == null)
+				{
+					toaster.pop('warning', "You have empty fields!");
+				}
 				$scope.flat.member = $rootScope.member;
 				Flat.save($scope.flat);
+				toaster.pop('success', "The flat has been added");
+				$scope.flat = {};
 			};
 		} ]);
