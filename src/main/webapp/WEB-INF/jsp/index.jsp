@@ -49,7 +49,9 @@
           <a ng-class="{ active: isActive('/')}" class="navbar-brand" href="${pageContext.request.contextPath}/">Roommates</a>
         </div>
         <div class="navbar-collapse collapse">
+
         <ul class="nav navbar-nav">
+        	<li ng-class="{ active: isActive('/addFlat')}"><a href="#/addFlat">New Flat</a></li>
         </ul>
           <ul class="nav navbar-nav navbar-right">
 
@@ -57,6 +59,7 @@
             <li ng-show="!$root.member" ng-class="{ active: isActive('/signup')}"><a href="#/signup">Sign Up</a></li>
             <li ng-show="$root.member"><a  href="#/memberProfile">{{ $root.member.email }}</a></li>
             <li ng-show="$root.member" ng-class="{ active: isActive('/login')}" ><a ng-click="$root.logout()" href="#">Log Out</a></li>
+           
           </ul>
         </div><!--/.nav-collapse -->
       </div>

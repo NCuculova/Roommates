@@ -1,7 +1,5 @@
 package mk.ukim.finki.mp.roommates.model;
 
-import java.sql.Blob;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -21,11 +19,11 @@ public class Flat extends BaseEntity {
 
 	private int area;
 	
-	private int heating;
+	private String heating;
 	
 	private int numRooms;
 
-	private Blob image;
+	//private Blob image;
 
 	public String getCity() {
 		return city;
@@ -59,11 +57,19 @@ public class Flat extends BaseEntity {
 		this.area = area;
 	}
 
-	public int getHeating() {
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
+
+	public String getHeating() {
 		return heating;
 	}
 
-	public void setHeating(int heating) {
+	public void setHeating(String heating) {
 		this.heating = heating;
 	}
 
@@ -74,7 +80,7 @@ public class Flat extends BaseEntity {
 	public void setNumRooms(int numRooms) {
 		this.numRooms = numRooms;
 	}
-
+/*
 	public Blob getImage() {
 		return image;
 	}
@@ -82,5 +88,5 @@ public class Flat extends BaseEntity {
 	public void setImage(Blob image) {
 		this.image = image;
 	}
-
+*/
 }
