@@ -8,19 +8,28 @@ RM.controller('HeaderController', [ '$scope', '$location',
 				var re = new RegExp(viewLocation);
 				return re.test($location.path());
 			};
+			$scope.selection = 'login';
+			$scope.$on('memberLoaded', function() {
+				$scope.selection = 'logout';
+			});
 		} ]);
 
-RM.controller('MemberLoginController', [ '$scope', 'Member', 'toaster',
-		function($scope, Member, toaster) {
+RM.controller('MemberLoginController', [ '$scope', '$location', '$rootScope',
+		'$cookieStore', 'Member', 'toaster',
+		function($scope, $location, $rootScope, $cookieStore, Member, toaster) {
+			$scope.success = true;
 			$scope.member = {};
 			$scope.login = function() {
-				Member.login($scope.member, function(data){
-					console.log(data);
-					if(data.success){
-						
-						
-					}
-					else{
+				Member.login($scope.member, function(data) {
+					// check the response if signed in
+					if (data.success) {
+						toaster.pop('success', "You are signed in!");
+						$rootScope.member = data.member;
+						// create the cookie 'token'
+						$cookieStore.put("token", data.token);
+						// redirect to memberProfile
+						$location.path('/memberProfile');
+					} else {
 						toaster.pop('error', "Invalid login!");
 					}
 				});
@@ -35,11 +44,28 @@ RM.controller('SignupController', [ '$scope', 'Member', 'toaster',
 				Member.save($scope.member, function(data) {
 					$scope.message = data.message;
 					$scope.success = data.success;
-					if(data.success) {
-						toaster.pop('success', "Now sign in :)");						
+					if (data.success) {
+						toaster.pop('success', "Now sign in :)");
 					} else {
 						toaster.pop('error', data.message);
 					}
 				});
+			};
+		} ]);
+
+RM.controller('MemberProfileController', [ '$scope', '$rootScope',
+		'MemberProfile', 'toaster',
+		function($scope, $rootScope, MemberProfile, toaster) {
+			$scope.memberProfile = {};
+			// wait for the event 'memberLoaded'
+			$scope.$on('memberLoaded', function() {
+				$scope.memberProfile = MemberProfile.findByMemberId({
+					id : $rootScope.member.id
+				});
+			});
+
+			$scope.saveNewMemberProfile = function() {
+				$scope.memberProfile.member = $rootScope.member;
+				MemberProfile.save($scope.memberProfile);
 			};
 		} ]);

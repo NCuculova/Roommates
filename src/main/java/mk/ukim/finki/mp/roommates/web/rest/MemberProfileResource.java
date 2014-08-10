@@ -44,6 +44,15 @@ public class MemberProfileResource {
 		}
 		return memberProfile;
 	}
+	
+	@RequestMapping(value = "/member/{id}", method = RequestMethod.GET, produces = "application/json")
+	public MemberProfile getByMemberId(@PathVariable Long id, HttpServletResponse response) {
+		MemberProfile memberProfile = service.findByMemberId(id);
+		if (memberProfile == null) {
+			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+		}
+		return memberProfile;
+	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
 	public void delete(@PathVariable Long id, HttpServletResponse response) {

@@ -6,23 +6,40 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import mk.ukim.finki.mp.roommates.util.CustomLocalDateSerializer;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @Entity
 @Table(name = "member_profile")
-public class MemberProfile extends BaseEntity{
+public class MemberProfile extends BaseEntity {
+
+	@OneToOne
+	private Member member;
 	
+	@JsonSerialize(using = CustomLocalDateSerializer.class)
 	private Date dateOfBirth;
+
+	private boolean sex;
 	
-	private String sex;
-	
+	@JsonSerialize(using = CustomLocalDateSerializer.class)
 	private Date moveDate;
-	
+
 	private String occupation;
-	
-	private boolean smoker;
-	
-	private boolean pets;
-	
+
+	private String smoker;
+
+	private String pets;
+
 	private String details;
+
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
 
 	public Date getDateOfBirth() {
 		return dateOfBirth;
@@ -32,11 +49,11 @@ public class MemberProfile extends BaseEntity{
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public String getSex() {
+	public boolean isSex() {
 		return sex;
 	}
 
-	public void setSex(String sex) {
+	public void setSex(boolean sex) {
 		this.sex = sex;
 	}
 
@@ -56,19 +73,19 @@ public class MemberProfile extends BaseEntity{
 		this.occupation = occupation;
 	}
 
-	public boolean isSmoker() {
+	public String getSmoker() {
 		return smoker;
 	}
 
-	public void setSmoker(boolean smoker) {
+	public void setSmoker(String smoker) {
 		this.smoker = smoker;
 	}
 
-	public boolean isPets() {
+	public String getPets() {
 		return pets;
 	}
 
-	public void setPets(boolean pets) {
+	public void setPets(String pets) {
 		this.pets = pets;
 	}
 
@@ -79,5 +96,7 @@ public class MemberProfile extends BaseEntity{
 	public void setDetails(String details) {
 		this.details = details;
 	}
+
 	
+
 }

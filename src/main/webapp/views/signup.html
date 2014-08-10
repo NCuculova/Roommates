@@ -1,32 +1,32 @@
 <div class="page-header">
 	<h1>Index</h1>
 </div>
-<div class="alert alert-warning" role="alert" ng-show="!success">{{message}}</div>
 <form class="form-horizontal" role="form"  ng-submit="saveNewMember()">
 	<div class="form-group">
-		<label for="email" class="col-sm-2 control-label">Email</label>
-		<div class="col-sm-10">
+		<label for="email" class="col-md-2 control-label">Email</label>
+		<div class="col-md-10">
 			<input type="email" class="form-control" id="email"
 				placeholder="Email" ng-model="member.email">
 		</div>
 	</div>
+	<div class="alert alert-warning col-md-10 col-md-offset-2 " role="alert" ng-show="!success">{{message}}</div>
 	<div class="form-group">
-		<label for="password" class="col-sm-2 control-label">Password</label>
-		<div class="col-sm-10">
+		<label for="password" class="col-md-2 control-label">Password</label>
+		<div class="col-md-10">
 			<input type="password" class="form-control" id="password"
 				placeholder="Password" ng-model="member.password">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="password" class="col-sm-2 control-label">Confirm your password</label>
-		<div class="col-sm-10">
+		<label for="password" class="col-md-2 control-label">Confirm your password</label>
+		<div class="col-md-10">
 			<input type="password" class="form-control" id="password"
 				placeholder="Password" ng-model="passwordConfirmation">
 				<span class="help-block" ng-show="member.password != passwordConfirmation">Passwords miss match!</span>
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
+		<div class="col-md-offset-2 col-md-10">
 			<button type="submit" class="btn btn-default">Sign in</button>
 		</div>
 	</div>

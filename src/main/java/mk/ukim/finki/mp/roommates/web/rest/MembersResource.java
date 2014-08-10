@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 import mk.ukim.finki.mp.roommates.model.Member;
 import mk.ukim.finki.mp.roommates.service.MembersService;
+import mk.ukim.finki.mp.roommates.util.TokenUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +34,7 @@ public class MembersResource {
 		if (member != null) {
 			result.put("success", false);
 			result.put("result", member);
-			result.put("message", "Duplicate email");
+			result.put("message", "Email already exists!");
 		} else {
 			result.put("success", true);
 			service.save(entity);
@@ -65,13 +66,37 @@ public class MembersResource {
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
 	public Map<String, Object> login(@RequestBody @Valid Member entity) {
 		Map<String, Object> result = new HashMap<String, Object>();
-		Member member = service.findByEmailAndPassword(entity.getEmail(), entity.getPassword());
-		if(member == null){
+		Member member = service.findByEmailAndPassword(entity.getEmail(),
+				entity.getPassword());
+		if (member == null) {
 			result.put("success", false);
-		}
-		else{
+		} else {
 			result.put("success", true);
 			result.put("member", member);
+			result.put("token", TokenUtils.createToken(member));
+		}
+		return result;
+	}
+
+	@RequestMapping(value = "/auth", method = RequestMethod.POST, produces = "application/json")
+	public Map<String, Object> auth(@RequestBody Map<String, String> request) {
+		String token = request.get("token");
+		Map<String, Object> result = new HashMap<String, Object>();
+		if (token == null) {
+			result.put("success", false);
+			result.put("message", "No token");
+		} else {
+			System.out.println("TOKEN: " + token);
+			String email = TokenUtils.getEmailFromToken(token);
+			Member member = service.findByEmail(email);
+			boolean valid = TokenUtils.validateToken(token, member);
+			if (valid) {
+				result.put("success", true);
+				result.put("member", member);
+			} else {
+				result.put("success", false);
+				result.put("message", "Invalid token");
+			}
 		}
 		return result;
 	}

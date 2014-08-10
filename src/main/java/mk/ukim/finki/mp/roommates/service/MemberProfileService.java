@@ -13,4 +13,6 @@ public interface MemberProfileService {
 	public MemberProfile findById(Long id);
 
 	public void delete(Long id);
+
+	public MemberProfile findByMemberId(Long id);
 }

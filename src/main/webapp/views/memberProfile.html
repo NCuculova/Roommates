@@ -3,20 +3,21 @@
 </div>
 <div class="row">
 	<div class="col-md-8">
-		<form class="form-horizontal" role="form">
+		<form class="form-horizontal" role="form"
+			ng-submit="saveNewMemberProfile()">
 			<div class="form-group">
-				<label class="control-label col-md-4">I am a </label>
-				<div class="btn-group col-md-8" ng-model="memberProfile.sex"
+				<label class="control-label col-md-2">I am a </label>
+				<div class="btn-group col-md-10" ng-model="memberProfile.sex"
 					bs-radio-group>
 					<label class="btn btn-default"><input type="radio"
-						class="btn btn-default" value="true" >Male</label> <label
+						class="btn btn-default" value="true">Male</label> <label
 						class="btn btn-default"><input type="radio"
-						class="btn btn-default" value="false" >Female</label>
+						class="btn btn-default" value="false">Female</label>
 				</div>
 			</div>
 			<div class=" form-group">
-				<label class="col-md-4 control-label">My occupation is </label>
-				<div class="col-md-8">
+				<label class="col-md-2 control-label">My occupation is </label>
+				<div class="col-md-10">
 					<input type="text" class="form-control" id="occupation"
 						placeholder="Enter your occupation"
 						ng-model="memberProfile.occupation">
@@ -41,7 +42,8 @@
 			<div class="form-group">
 				<label class="col-md-2 control-label">I am a </label>
 				<div class="col-md-10">
-					<select class="form-control" ui-select2	ng-model="memberProfile.smoker">
+					<select class="form-control" ui-select2
+						ng-model="memberProfile.smoker">
 						<option value="false">Non-smoker</option>
 						<option value="true">Smoker</option>
 					</select>
@@ -50,9 +52,10 @@
 			<div class="form-group">
 				<label class="col-md-2 control-label">I have </label>
 				<div class="col-md-10">
-					<select class="form-control" ui-select2 ng-model="memberProfile.pets">
-						<option>No-pets</option>
-						<option>Pets</option>
+					<select class="form-control" ui-select2
+						ng-model="memberProfile.pets">
+						<option value="false">No-pets</option>
+						<option value="true">Pets</option>
 					</select>
 				</div>
 			</div>

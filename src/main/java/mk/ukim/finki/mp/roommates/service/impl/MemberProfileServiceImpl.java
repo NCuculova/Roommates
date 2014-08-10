@@ -3,7 +3,6 @@ package mk.ukim.finki.mp.roommates.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import mk.ukim.finki.mp.roommates.model.Member;
 import mk.ukim.finki.mp.roommates.model.MemberProfile;
 import mk.ukim.finki.mp.roommates.repository.MemberProfileRepository;
 import mk.ukim.finki.mp.roommates.service.MemberProfileService;
@@ -35,6 +34,11 @@ public class MemberProfileServiceImpl implements MemberProfileService {
 	@Override
 	public void delete(Long id) {
 		memberProfileRepository.delete(id);
+	}
+
+	@Override
+	public MemberProfile findByMemberId(Long id) {
+		return memberProfileRepository.findByMemberId(id);
 	}
 
 }

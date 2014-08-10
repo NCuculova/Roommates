@@ -10,10 +10,19 @@ RM.factory('Member', [ '$resource', function($resource) {
 		'login' : {
 			method : 'POST',
 			url : WPUtil.ctx('/data/rest/members/login')
+		},
+		'auth' : {
+			method : 'POST',
+			url : WPUtil.ctx('/data/rest/members/auth')
 		}
 	});
 } ]);
 
 RM.factory('MemberProfile', [ '$resource', function($resource) {
-	return $resource(WPUtil.ctx('/data/rest/memberProfile/:id'), {});
+	return $resource(WPUtil.ctx('/data/rest/memberProfile/:id'), {},{
+		'findByMemberId':{
+			method : 'GET',
+			url : WPUtil.ctx('/data/rest/memberProfile/member/:id')
+		}
+	});
 } ]);

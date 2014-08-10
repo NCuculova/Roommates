@@ -7,7 +7,8 @@ RM.config([ '$routeProvider', '$locationProvider',
 				controller : 'MemberLoginController',
 				publicPage : true
 			}).when('/memberProfile', {
-				templateUrl : 'views/memberProfile.html'
+				templateUrl : 'views/memberProfile.html',
+				controller : 'MemberProfileController'
 			}).when('/signup', {
 				templateUrl : 'views/signup.html',
 				controller : 'SignupController',

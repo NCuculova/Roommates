@@ -49,10 +49,14 @@
           <a ng-class="{ active: isActive('/')}" class="navbar-brand" href="${pageContext.request.contextPath}/">Roommates</a>
         </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li ng-class="{ active: isActive('/login')}"><a href="#/login">Log In</a></li>
-            <li ng-class="{ active: isActive('/signup')}"><a href="#/signup">Sign Up</a></li>
-            
+        <ul class="nav navbar-nav">
+        </ul>
+          <ul class="nav navbar-nav navbar-right">
+
+            <li ng-show="!$root.member" ng-class="{ active: isActive('/login')} "><a href="#/login">Log In</a></li>
+            <li ng-show="!$root.member" ng-class="{ active: isActive('/signup')}"><a href="#/signup">Sign Up</a></li>
+            <li ng-show="$root.member"><a  href="#/memberProfile">{{ $root.member.email }}</a></li>
+            <li ng-show="$root.member" ng-class="{ active: isActive('/login')}" ><a ng-click="$root.logout()" href="#">Log Out</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -77,6 +81,7 @@
     <script src="${pageContext.request.contextPath}/resources/bower_components/angular-route/angular-route.js"></script>
     <script src="${pageContext.request.contextPath}/resources/bower_components/angular-animate/angular-animate.js"></script>
     <script src="${pageContext.request.contextPath}/resources/bower_components/angular-sanitize/angular-sanitize.js"></script>
+     <script src="${pageContext.request.contextPath}/resources/bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="${pageContext.request.contextPath}/resources/bower_components/ng-file-upload/angular-file-upload.js"></script>
   	<script src="${pageContext.request.contextPath}/resources/bower_components/ng-table/ng-table.js"></script>
   	<script src="${pageContext.request.contextPath}/resources/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
