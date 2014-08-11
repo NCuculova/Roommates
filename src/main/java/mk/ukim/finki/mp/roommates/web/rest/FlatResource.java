@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import mk.ukim.finki.mp.roommates.model.Flat;
+import mk.ukim.finki.mp.roommates.model.Member;
+import mk.ukim.finki.mp.roommates.model.MemberProfile;
 import mk.ukim.finki.mp.roommates.service.FlatService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,4 +51,5 @@ public class FlatResource {
 	public void delete(@PathVariable Long id, HttpServletResponse response) {
 		service.delete(id);
 	}
+	
 }

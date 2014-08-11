@@ -15,6 +15,6 @@ public interface FlatService {
 
 	public void delete(Long id);
 	
-	public List<Flat> findFlatsByMember(Member member);
+	public List<Flat> findFlatsByMember(Member entity);
 
 }

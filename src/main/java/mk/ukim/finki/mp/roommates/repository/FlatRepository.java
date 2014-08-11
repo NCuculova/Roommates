@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FlatRepository extends JpaRepository<Flat, Long> {
 	
-	List<Flat> findFlatsByMember(Member member);
+	List<Flat> findFlatsByMember(Member entity);
 }
