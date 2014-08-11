@@ -85,3 +85,39 @@ RM.controller('FlatController', [ '$scope','$rootScope', 'Flat', 'toaster',
 				$scope.flat = {};
 			};
 		} ]);
+
+RM.controller('MyFlatController', [ '$scope', '$rootScope', 'Flat', 'toaster',
+        function($scope, $rootScope, Flat, toaster) {
+		
+		$scope.flats = Flat.query();
+		
+} ]);
+/*
+WP.controller('PaperTypeController', ['$scope', 'PaperType',
+                                      function($scope, PaperType) {
+                                        $scope.paperType = {};
+                                        $scope.types = PaperType.query();
+                                        $scope.savePaperType = function() {
+                                          PaperType.save($scope.paperType, function(paperType) {
+                                            $scope.types = PaperType.query();
+                                            $scope.paperType = {};
+                                            $scope.paperTypeForm.$setPristine();
+                                          });
+                                        };
+
+                                        $scope.getType = function(id) {
+                                          $scope.paperType = PaperType.get({
+                                            id: id
+                                          });
+                                        };
+                                        $scope.deleteType = function(id) {
+                                          PaperType.remove({
+                                            id: id
+                                          }, function() {
+                                            $scope.types = PaperType.query();
+                                            $scope.paperType = {};
+                                          });
+
+                                        };
+
+                                      }]);*/
