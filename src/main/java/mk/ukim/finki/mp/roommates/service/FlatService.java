@@ -3,6 +3,7 @@ package mk.ukim.finki.mp.roommates.service;
 import java.util.List;
 
 import mk.ukim.finki.mp.roommates.model.Flat;
+import mk.ukim.finki.mp.roommates.model.Member;
 
 public interface FlatService {
 	
@@ -13,5 +14,7 @@ public interface FlatService {
 	public Flat findById(Long id);
 
 	public void delete(Long id);
+	
+	public List<Flat> findFlatsByMember(Member member);
 
 }

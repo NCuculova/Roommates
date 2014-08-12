@@ -53,6 +53,9 @@
         <ul class="nav navbar-nav">
         	<li ng-class="{ active: isActive('/addFlat')}"><a href="#/addFlat">New Flat</a></li>
         </ul>
+        <ul class="nav navbar-nav">
+        	<li ng-class="{ active: isActive('/myFlat')}"><a href="#/myFlat">My Flats</a></li>
+        </ul>
           <ul class="nav navbar-nav navbar-right">
 
             <li ng-show="!$root.member" ng-class="{ active: isActive('/login')} "><a href="#/login">Log In</a></li>
