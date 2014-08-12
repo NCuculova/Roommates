@@ -34,7 +34,7 @@ public class FlatServiceImplementation  implements FlatService{
 	}
 
 	@Override
-	public List<Flat> findFlatsByMember(Member member) {
+	public List<Flat> findFlatsByMember(Member entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}

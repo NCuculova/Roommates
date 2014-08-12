@@ -118,12 +118,14 @@ RM.controller('FlatController', [
 			};
 		} ]);
 
-RM.controller('MyFlatController', [ '$scope', '$rootScope', 'Flat', 'toaster',
-        function($scope, $rootScope, Flat, toaster) {
-		
+RM.controller('MyFlatController', [ '$scope', '$rootScope', 'Flat', 'toaster', '$modal',
+        function($scope, $rootScope, Flat, toaster, $modal) {
 		$scope.flats = Flat.query();
+		$scope.user = $rootScope.member;
+		//$scope.flats = Flat.findFlatsByMember($rootScope.member); ne znam kako da go napravam go srediv so ng-show 
 		
-} ]);
+
+
 /*
 WP.controller('PaperTypeController', ['$scope', 'PaperType',
                                       function($scope, PaperType) {
@@ -153,3 +155,42 @@ WP.controller('PaperTypeController', ['$scope', 'PaperType',
                                         };
 
                                       }]);*/
+
+		
+		$scope.save = function() {
+			$scope.flat.member = $rootScope.member;
+			Flat.save($scope.flat);
+			//$scope.modalCreate.close();
+		};
+		
+	    // creates modal 
+	    $scope.modalCreate = $modal({
+	        scope: $scope,
+	        title: 'Edit flat data: ',
+	        template: 'templates/modal-form.tpl.html',
+	        contentTemplate: 'forms/editFlat.html',
+	        show: false
+	    });
+	      
+	
+		// delete button
+	      $scope.deleteType = function(id) {
+	        Flat.remove({
+	          id: id
+	        }, function() {
+	          $scope.flats = Flat.query();
+	          toaster.pop('success', "You successfully deleted the flat");
+	        });
+	      };
+	      
+	      // edit button
+	      $scope.getType = function(id) {
+	    	$scope.flat = {};  
+	        $scope.flat = Flat.get({
+		            id: id
+		          }, function() {
+		            $scope.modalCreate.show();
+		          });
+		      };
+		      
+} ]);
