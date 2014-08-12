@@ -99,7 +99,7 @@ RM.controller('MyFlatController', [ '$scope', '$rootScope', 'Flat', 'toaster', '
 			//$scope.modalCreate.close();
 		};
 		
-	    //za da kreira modal 
+	    // creates modal 
 	    $scope.modalCreate = $modal({
 	        scope: $scope,
 	        title: 'Edit flat data: ',
@@ -109,7 +109,7 @@ RM.controller('MyFlatController', [ '$scope', '$rootScope', 'Flat', 'toaster', '
 	    });
 	      
 	
-		//za delete kopceto
+		// delete button
 	      $scope.deleteType = function(id) {
 	        Flat.remove({
 	          id: id
@@ -119,8 +119,9 @@ RM.controller('MyFlatController', [ '$scope', '$rootScope', 'Flat', 'toaster', '
 	        });
 	      };
 	      
-	      //za edit kopceto
+	      // edit button
 	      $scope.getType = function(id) {
+	    	$scope.flat = {};  
 	        $scope.flat = Flat.get({
 		            id: id
 		          }, function() {

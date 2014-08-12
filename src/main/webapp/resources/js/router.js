@@ -19,5 +19,9 @@ RM.config([ '$routeProvider', '$locationProvider',
 			}).when('/myFlat', {
 				templateUrl : 'views/myFlat.html',
 				controller : 'MyFlatController'
+			}).when('/editFlat', {
+				templateUrl : 'views/editFlat.html',
+				controller : 'MyFlatController',
+				publicPage : true
 			}).otherwise({redirectTo: '/'});
 		} ]);
