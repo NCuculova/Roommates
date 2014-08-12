@@ -91,13 +91,25 @@ RM.controller('MyFlatController', [ '$scope', '$rootScope', 'Flat', 'toaster',
 		$scope.flats = Flat.query();
 		$scope.user = $rootScope.member;
 		//$scope.flats = Flat.findFlatsByMember($rootScope.member); ne znam kako da go napravam go srediv so ng-show 
-		$scope.getType = function(id) {/*
-	        $scope.flats = Flat.get({
-	          id: id
-	        });*/
-			toaster.pop('success',"Tuka za editiranje nesto");
-	      };
+		
+		
+		/*$scope.save = function() {
+			$scope.flat.member = $rootScope.member;
+			Flat.save($scope.flat);
+			$scope.modalCreate.close();
+		};*/
+		
+	    //za da kreira modal 
+	    /*$scope.modalCreate = $modal({
+	        scope: $scope,
+	        title: 'Edit flat data: ',
+	        template: 'templates/modal-form.tpl.html',
+	        contentTemplate: 'forms/editFlat.html',
+	        show: false
+	    });*/
 	      
+	
+		//za delete kopceto
 	      $scope.deleteType = function(id) {
 	        Flat.remove({
 	          id: id
@@ -106,4 +118,14 @@ RM.controller('MyFlatController', [ '$scope', '$rootScope', 'Flat', 'toaster',
 	          toaster.pop('success', "You successfully deleted the flat");
 	        });
 	      };
+	      
+	      //za edit kopceto
+	      $scope.getType = function(id) {
+	       /* $scope.flat = Flat.get({
+		            id: id
+		          }, function() {
+		            $scope.modalCreate.show();
+		          });*/
+		      };
+		      
 } ]);
