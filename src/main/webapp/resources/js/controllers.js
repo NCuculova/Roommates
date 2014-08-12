@@ -71,11 +71,43 @@ RM.controller('MemberProfileController', [ '$scope', '$rootScope',
 			};
 		} ]);
 
-RM.controller('FlatController', [ '$scope','$rootScope', 'Flat', 'toaster',
-		function($scope, $rootScope, Flat, toaster) {
+RM.controller('FlatController', [
+		'$scope',
+		'$rootScope',
+		'$upload',
+		'Flat',
+		'FlatImage',
+		function($scope, $rootScope, $upload, Flat, FlatImage) {
 			$scope.flat = {};
+			
+			
 			$scope.saveNewFlat = function() {
 				$scope.flat.member = $rootScope.member;
-				Flat.save($scope.flat);
+				Flat.save($scope.flat, function(data) {
+					$scope.flat = data;
+				});
+			};
+
+			// upload flatImage
+			$scope.onFileSelect = function($files) {
+				function onSuccess(data, status, headers, config) {
+					$scope.flatImage = data;
+				}
+				function onError(data, status, headers, config) {
+					console.log("error");
+				}
+				for (var i = 0; i < $files.length; i++) {
+					var file = $files[i];
+					$scope.upload = $upload.upload(
+							{
+								url : RMUtil
+										.ctx("/data/rest/flatImages/upload/"
+												+ $scope.flat.id),
+								data : {
+									id : $scope.flat.id
+								},
+								file : file
+							}).success(onSuccess).error(onError);
+				}
 			};
 		} ]);

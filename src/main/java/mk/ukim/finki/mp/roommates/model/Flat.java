@@ -23,8 +23,6 @@ public class Flat extends BaseEntity {
 	
 	private int numRooms;
 
-	//private Blob image;
-
 	public String getCity() {
 		return city;
 	}
@@ -80,13 +78,4 @@ public class Flat extends BaseEntity {
 	public void setNumRooms(int numRooms) {
 		this.numRooms = numRooms;
 	}
-/*
-	public Blob getImage() {
-		return image;
-	}
-
-	public void setImage(Blob image) {
-		this.image = image;
-	}
-*/
 }
