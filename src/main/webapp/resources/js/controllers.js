@@ -71,18 +71,50 @@ RM.controller('MemberProfileController', [ '$scope', '$rootScope',
 			};
 		} ]);
 
-RM.controller('FlatController', [ '$scope','$rootScope', 'Flat', 'toaster',
-		function($scope, $rootScope, Flat, toaster) {
+RM.controller('FlatController', [
+		'$scope',
+		'$rootScope',
+		'$upload',
+		'Flat',
+		'FlatImage',
+		function($scope, $rootScope, $upload, Flat, FlatImage) {
 			$scope.flat = {};
+			
+			
 			$scope.saveNewFlat = function() {
 				if($scope.flat.area == null || $scope.flat.heating == null)
 				{
 					toaster.pop('warning', "You have empty fields!");
 				}
 				$scope.flat.member = $rootScope.member;
-				Flat.save($scope.flat);
-				toaster.pop('success', "The flat has been added");
-				$scope.flat = {};
+
+				Flat.save($scope.flat, function(data) {
+					$scope.flat = data;
+				});
+			};
+
+			// upload flatImage
+			$scope.onFileSelect = function($files) {
+				function onSuccess(data, status, headers, config) {
+					$scope.flatImage = data;
+				}
+				function onError(data, status, headers, config) {
+					console.log("error");
+				}
+				for (var i = 0; i < $files.length; i++) {
+					var file = $files[i];
+					$scope.upload = $upload.upload(
+							{
+								url : RMUtil
+										.ctx("/data/rest/flatImages/upload/"
+												+ $scope.flat.id),
+								data : {
+									id : $scope.flat.id
+								},
+								file : file
+							}).success(onSuccess).error(onError);
+				}
+
 			};
 		} ]);
 
@@ -92,6 +124,38 @@ RM.controller('MyFlatController', [ '$scope', '$rootScope', 'Flat', 'toaster', '
 		$scope.user = $rootScope.member;
 		//$scope.flats = Flat.findFlatsByMember($rootScope.member); ne znam kako da go napravam go srediv so ng-show 
 		
+
+
+/*
+WP.controller('PaperTypeController', ['$scope', 'PaperType',
+                                      function($scope, PaperType) {
+                                        $scope.paperType = {};
+                                        $scope.types = PaperType.query();
+                                        $scope.savePaperType = function() {
+                                          PaperType.save($scope.paperType, function(paperType) {
+                                            $scope.types = PaperType.query();
+                                            $scope.paperType = {};
+                                            $scope.paperTypeForm.$setPristine();
+                                          });
+                                        };
+
+                                        $scope.getType = function(id) {
+                                          $scope.paperType = PaperType.get({
+                                            id: id
+                                          });
+                                        };
+                                        $scope.deleteType = function(id) {
+                                          PaperType.remove({
+                                            id: id
+                                          }, function() {
+                                            $scope.types = PaperType.query();
+                                            $scope.paperType = {};
+                                          });
+
+                                        };
+
+                                      }]);*/
+
 		
 		$scope.save = function() {
 			$scope.flat.member = $rootScope.member;
