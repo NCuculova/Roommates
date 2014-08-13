@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import mk.ukim.finki.mp.roommates.model.Flat;
+import mk.ukim.finki.mp.roommates.model.FlatImage;
+import mk.ukim.finki.mp.roommates.service.FlatImageService;
 import mk.ukim.finki.mp.roommates.service.FlatService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class FlatResource {
 
 	@Autowired
 	private FlatService service;
+	
+	@Autowired
+	private FlatImageService imageService;
 
 	@RequestMapping(method = RequestMethod.POST, produces = "application/json")
 	public Flat create(@RequestBody @Valid Flat entity) {
@@ -47,6 +52,11 @@ public class FlatResource {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
 	public void delete(@PathVariable Long id, HttpServletResponse response) {
+		
+		List<FlatImage>images=imageService.getImagesByFlatId(id);
+		for (FlatImage flatImage : images) {
+			imageService.delete(flatImage.getId());
+		}
 		service.delete(id);
 	}
 
