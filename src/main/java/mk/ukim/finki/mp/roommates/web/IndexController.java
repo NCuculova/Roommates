@@ -30,7 +30,7 @@ public class IndexController {
 	}
 
 	@RequestMapping("/flatImage/download/{id}")
-	public String downloadPaperById(@PathVariable("id") Long id,
+	public String downloadImageById(@PathVariable("id") Long id,
 			HttpServletResponse response) {
 		FlatImage flatImage = flatImageService.findById(id);
 		writeFileToResponse(flatImage, response);
@@ -41,7 +41,6 @@ public class IndexController {
 			HttpServletResponse response) {
 		try {
 			OutputStream out = response.getOutputStream();
-			//response.setHeader("Content-Disposition", flatImage.getFileName());
 			response.setContentType(flatImage.getFileType());
 			response.setContentLength((int) flatImage.getImage().length());
 			IOUtils.copy(flatImage.getImage().getBinaryStream(), out);

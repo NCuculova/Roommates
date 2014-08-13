@@ -5,8 +5,9 @@ RM.config([ '$routeProvider', '$locationProvider',
 			$routeProvider.when('/login', {
 				templateUrl : 'views/memberLogin.html',
 				controller : 'MemberLoginController',
+				//public pages
 				publicPage : true
-			}).when('/memberProfile', {
+			}).when('/memberProfile', {//not a public page, member must be signed in
 				templateUrl : 'views/memberProfile.html',
 				controller : 'MemberProfileController'
 			}).when('/signup', {
@@ -22,6 +23,6 @@ RM.config([ '$routeProvider', '$locationProvider',
 			}).when('/editFlat', {
 				templateUrl : 'views/editFlat.html',
 				controller : 'MyFlatController',
-				publicPage : true
+				//publicPage : true ---> i za vaa strana treba da bidish najaven, inaku ke bide public, taka da ne treba voa nasekade :)
 			}).otherwise({redirectTo: '/'});
 		} ]);

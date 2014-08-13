@@ -49,11 +49,11 @@ public class FlatImageResource {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
 	public FlatImage get(@PathVariable Long id, HttpServletResponse response) {
-		FlatImage flat = service.findById(id);
-		if (flat == null) {
+		FlatImage flatImage = service.findById(id);
+		if (flatImage == null) {
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 		}
-		return flat;
+		return flatImage;
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
@@ -62,6 +62,7 @@ public class FlatImageResource {
 	}
 	
 	@RequestMapping(value = "/upload/{id}", method = RequestMethod.POST, produces = "application/json")
+	// the method return value should be bound to the web responce body
 	@ResponseBody
 	public FlatImage uploadFile(MultipartFile file, @PathVariable Long id)
 			throws IOException, SerialException, SQLException {
@@ -73,7 +74,11 @@ public class FlatImageResource {
 		flatImage.setFileType(file.getContentType());
 		service.save(flatImage);
 		return flatImage;
-		
+	}
+	
+	@RequestMapping(value="/image/{id}", method = RequestMethod.GET, produces = "application/json")
+	public List<FlatImage> getImagesByFlatId(@PathVariable Long id) {
+		return service.getImagesByFlatId(id);
 	}
 	
 }

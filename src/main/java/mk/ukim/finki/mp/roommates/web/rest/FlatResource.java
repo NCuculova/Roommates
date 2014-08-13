@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import mk.ukim.finki.mp.roommates.model.Flat;
-import mk.ukim.finki.mp.roommates.model.Member;
-import mk.ukim.finki.mp.roommates.model.MemberProfile;
 import mk.ukim.finki.mp.roommates.service.FlatService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +29,7 @@ public class FlatResource {
 		service.save(entity);
 		return entity;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
 	public List<Flat> getAll() {
 		Collection<Flat> flats = service.findAll();
@@ -46,10 +44,15 @@ public class FlatResource {
 		}
 		return flat;
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
 	public void delete(@PathVariable Long id, HttpServletResponse response) {
 		service.delete(id);
 	}
-	
+
+	@RequestMapping(value = "/member/{id}", method = RequestMethod.GET, produces = "application/json")
+	public List<Flat> findAllByMemberId(@PathVariable Long id,
+			HttpServletResponse response) {
+		return service.findAllByMemberId(id);
+	}
 }

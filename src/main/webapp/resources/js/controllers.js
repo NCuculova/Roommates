@@ -8,10 +8,6 @@ RM.controller('HeaderController', [ '$scope', '$location',
 				var re = new RegExp(viewLocation);
 				return re.test($location.path());
 			};
-			$scope.selection = 'login';
-			$scope.$on('memberLoaded', function() {
-				$scope.selection = 'logout';
-			});
 		} ]);
 
 RM.controller('MemberLoginController', [ '$scope', '$location', '$rootScope',
@@ -64,10 +60,11 @@ RM.controller('MemberProfileController', [ '$scope', '$rootScope',
 					id : $rootScope.member.id
 				});
 			});
-
 			$scope.saveNewMemberProfile = function() {
 				$scope.memberProfile.member = $rootScope.member;
-				MemberProfile.save($scope.memberProfile);
+				MemberProfile.save($scope.memberProfile, function(){
+					$scope.memberForm.$setPristine();
+				});
 			};
 		} ]);
 
@@ -75,28 +72,76 @@ RM.controller('FlatController', [
 		'$scope',
 		'$rootScope',
 		'$upload',
+		'$modal',
 		'Flat',
 		'FlatImage',
-		function($scope, $rootScope, $upload, Flat, FlatImage) {
+		function($scope, $rootScope, $upload, $modal, Flat, FlatImage) {
 			$scope.flat = {};
-			
-			
+			// find all flats that belong to the signed in member
+			$scope.$on('memberLoaded', function() {
+				$scope.flats = Flat.findAllByMemberId({
+					id : $rootScope.member.id
+				});
+			});
 			$scope.saveNewFlat = function() {
-				if($scope.flat.area == null || $scope.flat.heating == null)
-				{
-					toaster.pop('warning', "You have empty fields!");
-				}
+				// save current member
 				$scope.flat.member = $rootScope.member;
-
 				Flat.save($scope.flat, function(data) {
 					$scope.flat = data;
+					$scope.flats = Flat.findAllByMemberId({
+						id : $rootScope.member.id
+					});
+					$scope.flat = {};
+					$scope.addFlatForm.$setPristine();
 				});
 			};
+			// find the selected flat for edit
+			$scope.getFlat = function(flatId) {
+				$scope.flat = Flat.get({
+					id : flatId
+				});
+
+			};
+			// find the selected flat to delete
+			$scope.deleteFlat = function(flatId) {
+				Flat.remove({
+					id : flatId
+				}, function() {
+					$scope.flats = Flat.findAllByMemberId({
+						id : $rootScope.member.id
+					});
+				});
+			};
+
+			// creates modal window Upload images
+			$scope.modalCreate = $modal({
+				scope : $scope,
+				template : 'templates/modal-form-notitle.tpl.html',
+				contentTemplate : 'forms/imageUpload.html',
+				show : false
+			});
+
+			// show modal window
+			$scope.showUpload = function(flatId) {
+				$scope.flatId = flatId;
+				// get images for the flat
+				$scope.images = FlatImage.getImagesByFlatId({
+					id : flatId
+				}, function(data) {
+					$scope.modalCreate.show();
+				});
+
+			};
+
+			$scope.basePath = RMUtil.basePath;
 
 			// upload flatImage
 			$scope.onFileSelect = function($files) {
 				function onSuccess(data, status, headers, config) {
 					$scope.flatImage = data;
+					$scope.images = FlatImage.getImagesByFlatId({
+						id : $scope.flatId
+					});
 				}
 				function onError(data, status, headers, config) {
 					console.log("error");
@@ -107,90 +152,12 @@ RM.controller('FlatController', [
 							{
 								url : RMUtil
 										.ctx("/data/rest/flatImages/upload/"
-												+ $scope.flat.id),
+												+ $scope.flatId),
 								data : {
-									id : $scope.flat.id
+									id : $scope.flatId
 								},
 								file : file
 							}).success(onSuccess).error(onError);
 				}
-
 			};
 		} ]);
-
-RM.controller('MyFlatController', [ '$scope', '$rootScope', 'Flat', 'toaster', '$modal',
-        function($scope, $rootScope, Flat, toaster, $modal) {
-		$scope.flats = Flat.query();
-		$scope.user = $rootScope.member;
-		//$scope.flats = Flat.findFlatsByMember($rootScope.member); ne znam kako da go napravam go srediv so ng-show 
-		
-
-
-/*
-WP.controller('PaperTypeController', ['$scope', 'PaperType',
-                                      function($scope, PaperType) {
-                                        $scope.paperType = {};
-                                        $scope.types = PaperType.query();
-                                        $scope.savePaperType = function() {
-                                          PaperType.save($scope.paperType, function(paperType) {
-                                            $scope.types = PaperType.query();
-                                            $scope.paperType = {};
-                                            $scope.paperTypeForm.$setPristine();
-                                          });
-                                        };
-
-                                        $scope.getType = function(id) {
-                                          $scope.paperType = PaperType.get({
-                                            id: id
-                                          });
-                                        };
-                                        $scope.deleteType = function(id) {
-                                          PaperType.remove({
-                                            id: id
-                                          }, function() {
-                                            $scope.types = PaperType.query();
-                                            $scope.paperType = {};
-                                          });
-
-                                        };
-
-                                      }]);*/
-
-		
-		$scope.save = function() {
-			$scope.flat.member = $rootScope.member;
-			Flat.save($scope.flat);
-			//$scope.modalCreate.close();
-		};
-		
-	    // creates modal 
-	    $scope.modalCreate = $modal({
-	        scope: $scope,
-	        title: 'Edit flat data: ',
-	        template: 'templates/modal-form.tpl.html',
-	        contentTemplate: 'forms/editFlat.html',
-	        show: false
-	    });
-	      
-	
-		// delete button
-	      $scope.deleteType = function(id) {
-	        Flat.remove({
-	          id: id
-	        }, function() {
-	          $scope.flats = Flat.query();
-	          toaster.pop('success', "You successfully deleted the flat");
-	        });
-	      };
-	      
-	      // edit button
-	      $scope.getType = function(id) {
-	    	$scope.flat = {};  
-	        $scope.flat = Flat.get({
-		            id: id
-		          }, function() {
-		            $scope.modalCreate.show();
-		          });
-		      };
-		      
-} ]);

@@ -29,7 +29,7 @@ RM.factory('MemberProfile', [ '$resource', function($resource) {
 
 RM.factory('Flat', [ '$resource', function($resource) {
 	return $resource(RMUtil.ctx('/data/rest/flats/:id'), {},{
-		'findByMemberId':{
+		'findAllByMemberId':{
 			method : 'GET',
 			isArray: true,
 			url : RMUtil.ctx('/data/rest/flats/member/:id')
@@ -38,5 +38,11 @@ RM.factory('Flat', [ '$resource', function($resource) {
 } ]);
 
 RM.factory('FlatImage', [ '$resource', function($resource) {
-	return $resource(RMUtil.ctx('/data/rest/flatImages/:id'), {});
+	return $resource(RMUtil.ctx('/data/rest/flatImages/:id'), {},{
+		'getImagesByFlatId':{
+			method : 'GET',
+			isArray: true,
+			url : RMUtil.ctx('/data/rest/flatImages/image/:id')
+		}
+	});
 } ]);

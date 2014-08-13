@@ -3,7 +3,6 @@ package mk.ukim.finki.mp.roommates.service.impl;
 import java.util.List;
 
 import mk.ukim.finki.mp.roommates.model.Flat;
-import mk.ukim.finki.mp.roommates.model.Member;
 import mk.ukim.finki.mp.roommates.repository.FlatRepository;
 import mk.ukim.finki.mp.roommates.service.FlatService;
 
@@ -37,8 +36,10 @@ public class FlatServiceImpl  implements FlatService{
 	}
 
 	@Override
-	public List<Flat> findFlatsByMember(Member entity) {
-		return flatRepository.findFlatsByMember(entity);
+	public List<Flat> findAllByMemberId(Long id) {
+		return flatRepository.findAllByMemberId(id);
 	}
+
+	
 
 }

@@ -14,4 +14,7 @@ public interface FlatImageService {
 
 	public void delete(Long id);
 
+	public List<FlatImage> getImagesByFlatId(Long id);
+
+
 }

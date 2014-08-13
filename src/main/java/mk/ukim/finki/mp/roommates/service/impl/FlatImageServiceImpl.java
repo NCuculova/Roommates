@@ -35,4 +35,9 @@ public class FlatImageServiceImpl  implements FlatImageService{
 		flatImageRepository.delete(id);
 	}
 
+	@Override
+	public List<FlatImage> getImagesByFlatId(Long id) {
+		return flatImageRepository.getImagesByFlatId(id);
+	}
+
 }
