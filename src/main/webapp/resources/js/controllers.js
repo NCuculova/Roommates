@@ -67,6 +67,59 @@ RM.controller('MemberProfileController', [ '$scope', '$rootScope',
 				});
 			};
 		} ]);
+RM.controller('ListingController',['$scope', '$rootScope', '$upload', '$modal', 'toaster', 'Listing', 'Flat',
+        function($scope, $rootScope, $upload, $modal, toaster, Listing){
+			$scope.listing = {};
+			
+			// find all flats that belong to the signed in member
+			$scope.$on('memberLoaded', function() {
+				$scope.listings = Listing.findAllByMemberId({
+					id : $rootScope.member.id
+				});
+			});
+			
+			$scope.saveNewListing = function(){
+				$scope.listing.member = $rootScope.member;
+				$scope.listing.date = Date.now();
+				Listing.save($scope.listing, function(data){
+					$scope.listing = data;
+					$scope.listings = Listing.findAllByMemberId({
+						id : $rootScope.member.id
+					});
+					$scope.listing = {};
+					$scope.addListingForm.$setPristine();
+				});
+			};
+			$scope.getListing = function(listingId) {
+				$scope.listing = Listing.get({
+					id : listingId
+				});
+
+			};
+}]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 RM.controller('FlatController', [
 		'$scope',

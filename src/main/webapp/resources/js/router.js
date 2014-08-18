@@ -14,6 +14,14 @@ RM.config([ '$routeProvider', '$locationProvider',
 				templateUrl : 'views/signup.html',
 				controller : 'SignupController',
 				publicPage : true
+			}).when('/listings', {
+				templateUrl : 'views/listings.html',
+				controller : 'ListingController',
+				publicPage : true
+			}).when('/addListing', {
+				templateUrl : 'views/addListing.html',
+				controller : 'ListingController',
+				publicPage : true
 			}).when('/addFlat', {
 				templateUrl : 'views/addFlat.html',
 				controller : 'FlatController'
@@ -22,7 +30,7 @@ RM.config([ '$routeProvider', '$locationProvider',
 				controller : 'MyFlatController'
 			}).when('/editFlat', {
 				templateUrl : 'views/editFlat.html',
-				controller : 'MyFlatController',
-				//publicPage : true ---> i za vaa strana treba da bidish najaven, inaku ke bide public, taka da ne treba voa nasekade :)
+				controller : 'MyFlatController'
+				//publicPage : true //---> i za vaa strana treba da bidish najaven, inaku ke bide public, taka da ne treba voa nasekade :)
 			}).otherwise({redirectTo: '/'});
 		} ]);
