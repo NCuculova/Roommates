@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import mk.ukim.finki.mp.roommates.util.CustomLocalDateSerializer;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -16,6 +18,8 @@ public class MemberProfile extends BaseEntity {
 
 	@OneToOne
 	private Member member;
+	
+	private String name;
 	
 	@JsonSerialize(using = CustomLocalDateSerializer.class)
 	private Date dateOfBirth;
@@ -41,6 +45,14 @@ public class MemberProfile extends BaseEntity {
 		this.member = member;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}

@@ -49,7 +49,9 @@
           <a ng-class="{ active: isActive('/')}" class="navbar-brand" href="${pageContext.request.contextPath}/">Roommates</a>
         </div>
         <div class="navbar-collapse collapse">
-
+		<ul class="nav navbar-nav">
+        	<li ng-class="{ active: isActive('/memberProfile')}"><a href="#/memberProfile">Member profile</a></li>
+        </ul>
         <ul class="nav navbar-nav">
         	<li ng-class="{ active: isActive('/addFlat')}"><a href="#/addFlat">New Flat</a></li>
         </ul>

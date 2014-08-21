@@ -5,6 +5,16 @@
 	<div class="col-md-8">
 		<form class="form-horizontal" role="form" name="memberForm"
 			ng-submit="saveNewMemberProfile()" novalidate>
+			
+			
+			<div class=" form-group">
+				<label class="col-md-2 control-label">My name is</label>
+				<div class="col-md-10">
+					<input type="text" class="form-control" id="name"
+						placeholder="Enter your name"
+						ng-model="memberProfile.name" required>
+				</div>
+			</div>
 			<div class="form-group">
 				<label class="control-label col-md-2">I am a </label>
 				<div class="btn-group col-md-10" ng-model="memberProfile.sex"
