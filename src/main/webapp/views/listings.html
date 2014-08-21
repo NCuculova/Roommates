@@ -1,7 +1,30 @@
-<html>
-<head>
-</head>
-<body>
-	<p>Hello world!</p>
-</body>
-</html>
+<div class="page-header">
+	<h1>Listings</h1>
+</div>
+<div class="col-md-6">
+<table ng-repeat="listing in listings" class="table table-condensed table-striped table-bordered">
+	<tr colspan="2">>
+		<td>{{listing.data}}</td>
+	</tr>
+	<tr colspan="2">
+		<td>{{listing.title}}</td>
+	</tr>
+	<tr>
+		<th>City:</th>
+		<td>{{listing.city}}</td>
+	</tr>
+	<tr>
+		<th>District:</th>
+		<td>{{listing.district}}</td>
+	</tr>
+	<tr>
+		<th>Price:</th>
+		<td>{{listing.price}}</td>
+	</tr>
+	<tr colspan="2">
+		<td><button type="button" class="btn btn-default btn-xs"
+			ng-click="viewDetails(listing.id)">View more details</button></td>
+	</tr>
+</table>
+	
+</div>

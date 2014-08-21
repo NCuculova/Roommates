@@ -98,7 +98,10 @@ RM.controller('ListingController',['$scope', '$rootScope', '$upload', '$modal', 
 			};
 }]);
 
-
+RM.controller('ListingController',['$scope', '$rootScope', '$upload', '$modal', 'toaster', 'Listing', 'Flat','FlatImage',
+    function($scope, $rootScope, $upload, $modal, toaster, Listing, Flat, FlatImage){
+	
+}]);
 
 
 
