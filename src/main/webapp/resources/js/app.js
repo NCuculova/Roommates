@@ -21,7 +21,7 @@ RM.run(function($rootScope, $location, $cookieStore,toaster, Member) {
 		$location.path('/');
 		toaster.pop('success', "You are signed out!");
 	};
-	var publicPages = ['/', '/signup'];
+	var publicPages = ['/', '/signup', '/login'];
 	var validateToken = function() {
 		var token = $cookieStore.get("token");
 		if(token) {

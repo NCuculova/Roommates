@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import mk.ukim.finki.mp.roommates.util.CustomLocalDateSerializer;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @Entity
 @Table(name = "listing")
 public class Listing extends BaseEntity{
@@ -16,7 +20,11 @@ public class Listing extends BaseEntity{
 	@ManyToOne
 	private Member member;
 	
-	private Date date;
+	@JsonSerialize(using = CustomLocalDateSerializer.class)
+	private Date dateFrom;
+	
+	@JsonSerialize(using = CustomLocalDateSerializer.class)
+	private Date dateTo;
 	
 	private int price;
 	
@@ -40,12 +48,20 @@ public class Listing extends BaseEntity{
 		this.member = member;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getDateFrom() {
+		return dateFrom;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDateFrom(Date dateFrom) {
+		this.dateFrom = dateFrom;
+	}
+
+	public Date getDateTo() {
+		return dateTo;
+	}
+
+	public void setDateTo(Date dateTo) {
+		this.dateTo = dateTo;
 	}
 
 	public int getPrice() {

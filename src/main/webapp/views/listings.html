@@ -1,30 +1,37 @@
 <div class="page-header">
 	<h1>Listings</h1>
 </div>
-<div class="col-md-6">
-<table ng-repeat="listing in listings" class="table table-condensed table-striped table-bordered">
-	<tr colspan="2">>
-		<td>{{listing.data}}</td>
-	</tr>
-	<tr colspan="2">
-		<td>{{listing.title}}</td>
-	</tr>
-	<tr>
-		<th>City:</th>
-		<td>{{listing.city}}</td>
-	</tr>
-	<tr>
-		<th>District:</th>
-		<td>{{listing.district}}</td>
-	</tr>
-	<tr>
-		<th>Price:</th>
-		<td>{{listing.price}}</td>
-	</tr>
-	<tr colspan="2">
-		<td><button type="button" class="btn btn-default btn-xs"
-			ng-click="viewDetails(listing.id)">View more details</button></td>
-	</tr>
-</table>
-	
+<div class="col-md-4">
+	<table class="table table-condensed table-striped table-bordered"
+		ng-show="flats.length">
+		<tr>
+			<th ng-hide="true">Member ID</th>
+			<th>Address</th>
+			<th>District</th>
+			<th>City</th>
+			<th>Create listing</th>
+		</tr>
+		<tr ng-repeat="f in flats">
+			<td ng-hide="true">{{f.id}}</td>
+			<td>{{f.address}}</td>
+			<td>{{f.district}}</td>
+			<td>{{f.city}}</td>
+			<td><button type="button" class="btn btn-default btn-xs"
+					ng-click="showFlatListingForm(f)">Add</button></td>
+		</tr>
+	</table>
+</div>
+<div class="col-md-8">
+	<table class="table table-condensed table-striped table-bordered">
+		<tr>
+			<th>Title</th>
+			<th>Active</th>
+			<th>Price</th>
+		</tr>
+		<tr ng-repeat="list in listings">
+			<td>{{list.title}}</td>
+			<td>{{list.dateFrom | date : 'd'}} - {{list.dateTo | date : 'd MMM yyyy'}} </td>
+			<td>{{list.price}} euro</td>
+		</tr>
+	</table>
 </div>

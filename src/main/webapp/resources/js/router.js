@@ -2,7 +2,11 @@
 
 RM.config([ '$routeProvider', '$locationProvider',
 		function($routeProvider, $locationProvider) {
-			$routeProvider.when('/login', {
+			$routeProvider.when('/', {
+				templateUrl : 'views/index.html',
+				//controller : 'MemberLoginController',
+				publicPage : true
+			}).when('/login', {
 				templateUrl : 'views/memberLogin.html',
 				controller : 'MemberLoginController',
 				//public pages
@@ -16,15 +20,14 @@ RM.config([ '$routeProvider', '$locationProvider',
 				publicPage : true
 			}).when('/listings', {
 				templateUrl : 'views/listings.html',
-				controller : 'ShowListingsController',
-				publicPage : true
+				controller : 'ListingController'
 			}).when('/addListing', {
 				templateUrl : 'views/addListing.html',
-				controller : 'ListingController',
+		//		controller : 'ListingController',
 				publicPage : true
 			}).when('/listingProfile', {
+				//controller : 'ListingProfileController',
 				templateUrl : 'views/listingProfile.html',
-				controller : 'ListingProfileController',
 				publicPage : true
 			}).when('/addFlat', {
 				templateUrl : 'views/addFlat.html',

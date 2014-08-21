@@ -7,8 +7,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import mk.ukim.finki.mp.roommates.model.Flat;
-import mk.ukim.finki.mp.roommates.model.FlatImage;
 import mk.ukim.finki.mp.roommates.model.Listing;
 import mk.ukim.finki.mp.roommates.service.ListingService;
 
@@ -58,5 +56,10 @@ public class ListingResource {
 	public List<Listing> findAllByMemberId(@PathVariable Long id, HttpServletResponse response) {
 		return service.findAllByMemberId(id);
 	}
+	/*
+	@RequestMapping(value = "/active", method = RequestMethod.GET, produces = "application/json")
+	public List<Listing> findAllByDate() {
+		return service.findAllByMemberId(id);
+	}*/
 
 }

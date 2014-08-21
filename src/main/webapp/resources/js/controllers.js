@@ -62,67 +62,11 @@ RM.controller('MemberProfileController', [ '$scope', '$rootScope',
 			});
 			$scope.saveNewMemberProfile = function() {
 				$scope.memberProfile.member = $rootScope.member;
-				MemberProfile.save($scope.memberProfile, function(){
+				MemberProfile.save($scope.memberProfile, function() {
 					$scope.memberForm.$setPristine();
 				});
 			};
 		} ]);
-RM.controller('ListingController',['$scope', '$rootScope', '$upload', '$modal', 'toaster', 'Listing', 'Flat',
-        function($scope, $rootScope, $upload, $modal, toaster, Listing){
-			$scope.listing = {};
-			
-			// find all flats that belong to the signed in member
-			$scope.$on('memberLoaded', function() {
-				$scope.listings = Listing.findAllByMemberId({
-					id : $rootScope.member.id
-				});
-			});
-			
-			$scope.saveNewListing = function(){
-				$scope.listing.member = $rootScope.member;
-				$scope.listing.date = Date.now();
-				Listing.save($scope.listing, function(data){
-					$scope.listing = data;
-					$scope.listings = Listing.findAllByMemberId({
-						id : $rootScope.member.id
-					});
-					$scope.listing = {};
-					$scope.addListingForm.$setPristine();
-				});
-			};
-			$scope.getListing = function(listingId) {
-				$scope.listing = Listing.get({
-					id : listingId
-				});
-
-			};
-}]);
-
-RM.controller('ListingController',['$scope', '$rootScope', '$upload', '$modal', 'toaster', 'Listing', 'Flat','FlatImage',
-    function($scope, $rootScope, $upload, $modal, toaster, Listing, Flat, FlatImage){
-	
-}]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 RM.controller('FlatController', [
 		'$scope',
@@ -216,4 +160,45 @@ RM.controller('FlatController', [
 							}).success(onSuccess).error(onError);
 				}
 			};
+		} ]);
+
+RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
+		'toaster', 'Listing', 'Flat',
+		function($scope, $rootScope, $modal, toaster, Listing, Flat) {
+			// find all flats that belong to the signed in member
+			$scope.$on('memberLoaded', function() {
+				$scope.flats = Flat.findAllByMemberId({
+					id : $rootScope.member.id
+				});
+				$scope.listings = Listing.findAllByMemberId({
+					id : $rootScope.member.id
+				});
+			});
+
+			// creates modal window for adding listings
+			$scope.modalCreate = $modal({
+				scope : $scope,
+				template : 'templates/modal-form-notitle.tpl.html',
+				contentTemplate : 'forms/flatListing.html',
+				show : false
+			});
+
+			// show modal window
+			$scope.showFlatListingForm = function(flat) {
+				$scope.modalCreate.show();
+				$scope.listing = {};
+				$scope.listing.flat = flat;
+			};
+			
+			$scope.saveNewListing = function(){
+				$scope.listing.member = $rootScope.member;
+				Listing.save($scope.listing, function(data){
+					$scope.listing = data;
+					$scope.listings = Listing.findAllByMemberId({
+						id : $rootScope.member.id
+					});
+					$scope.modalCreate.hide();
+				});
+			};
+
 		} ]);
