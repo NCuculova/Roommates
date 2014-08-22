@@ -53,16 +53,10 @@
         	<li ng-class="{ active: isActive('/memberProfile')}"><a href="#/memberProfile">Member profile</a></li>
         </ul>
         <ul class="nav navbar-nav">
-        	<li ng-class="{ active: isActive('/addFlat')}"><a href="#/addFlat">New Flat</a></li>
+        	<li ng-class="{ active: isActive('/addFlat')}"><a href="#/addFlat">My place</a></li>
         </ul>
         <ul class="nav navbar-nav">
-        	<li ng-class="{ active: isActive('/myFlat')}"><a href="#/myFlat">My Flats</a></li>
-        </ul>
-        <ul class="nav navbar-nav">
-        	<li ng-class="{ active: isActive('/listing')}"><a href="#/addListing">Add Listing</a></li>
-        </ul>
-        <ul class="nav navbar-nav">
-        	<li ng-class="{ active: isActive('/listing')}"><a href="#/listings">Listings</a></li>
+        	<li ng-class="{ active: isActive('/listing')}"><a href="#/listings">List my place</a></li>
         </ul>
         <ul class="nav navbar-nav">
         	<li ng-class="{ active: isActive('/listingProfile')}"><a href="#/listingProfile">Listing profile</a></li>

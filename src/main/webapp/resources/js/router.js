@@ -32,9 +32,6 @@ RM.config([ '$routeProvider', '$locationProvider',
 			}).when('/addFlat', {
 				templateUrl : 'views/addFlat.html',
 				controller : 'FlatController'
-			}).when('/myFlat', {
-				templateUrl : 'views/myFlat.html',
-				controller : 'MyFlatController'
 			}).when('/editFlat', {
 				templateUrl : 'views/editFlat.html',
 				controller : 'MyFlatController'

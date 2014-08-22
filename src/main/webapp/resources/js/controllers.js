@@ -189,10 +189,10 @@ RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 				$scope.listing = {};
 				$scope.listing.flat = flat;
 			};
-			
-			$scope.saveNewListing = function(){
+
+			$scope.saveNewListing = function() {
 				$scope.listing.member = $rootScope.member;
-				Listing.save($scope.listing, function(data){
+				Listing.save($scope.listing, function(data) {
 					$scope.listing = data;
 					$scope.listings = Listing.findAllByMemberId({
 						id : $rootScope.member.id
