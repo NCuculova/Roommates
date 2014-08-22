@@ -4,7 +4,6 @@ RM.config([ '$routeProvider', '$locationProvider',
 		function($routeProvider, $locationProvider) {
 			$routeProvider.when('/', {
 				templateUrl : 'views/index.html',
-				//controller : 'MemberLoginController',
 				publicPage : true
 			}).when('/login', {
 				templateUrl : 'views/memberLogin.html',
@@ -21,10 +20,6 @@ RM.config([ '$routeProvider', '$locationProvider',
 			}).when('/listings', {
 				templateUrl : 'views/listings.html',
 				controller : 'ListingController'
-			}).when('/addListing', {
-				templateUrl : 'views/addListing.html',
-		//		controller : 'ListingController',
-				publicPage : true
 			}).when('/listingProfile', {
 				//controller : 'ListingProfileController',
 				templateUrl : 'views/listingProfile.html',
@@ -32,9 +27,5 @@ RM.config([ '$routeProvider', '$locationProvider',
 			}).when('/addFlat', {
 				templateUrl : 'views/addFlat.html',
 				controller : 'FlatController'
-			}).when('/editFlat', {
-				templateUrl : 'views/editFlat.html',
-				controller : 'MyFlatController'
-				//publicPage : true //---> i za vaa strana treba da bidish najaven, inaku ke bide public, taka da ne treba voa nasekade :)
 			}).otherwise({redirectTo: '/'});
 		} ]);

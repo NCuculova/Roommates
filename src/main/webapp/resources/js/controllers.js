@@ -163,8 +163,8 @@ RM.controller('FlatController', [
 		} ]);
 
 RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
-		'toaster', 'Listing', 'Flat',
-		function($scope, $rootScope, $modal, toaster, Listing, Flat) {
+		'Listing', 'Flat', function($scope, $rootScope, $modal, Listing, Flat) {
+	
 			// find all flats that belong to the signed in member
 			$scope.$on('memberLoaded', function() {
 				$scope.flats = Flat.findAllByMemberId({
@@ -198,6 +198,15 @@ RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 						id : $rootScope.member.id
 					});
 					$scope.modalCreate.hide();
+				});
+			};
+			
+			// get list for edit
+			$scope.editList = function(listId){
+				$scope.listing = Listing.get({
+					id : listId
+				}, function(data) {
+					$scope.modalCreate.show();
 				});
 			};
 
