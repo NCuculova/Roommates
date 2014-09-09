@@ -47,6 +47,12 @@ RM.factory('Listing', [ '$resource', function($resource) {
 	});
 } ]);
 
+RM.factory('ListLook', [ '$resource', function($resource) {
+	return $resource(RMUtil.ctx('/data/rest/listLook/:id'), {},{
+		
+	});
+} ]);
+
 RM.factory('FlatImage', [ '$resource', function($resource) {
 	return $resource(RMUtil.ctx('/data/rest/flatImages/:id'), {},{
 		'getImagesByFlatId':{

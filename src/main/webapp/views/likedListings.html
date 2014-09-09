@@ -1,0 +1,13 @@
+<div class="page-header">
+	<h1>Listings</h1>
+</div>
+<div class="col-md-8">
+	<div class="list-group" ng-repeat="l in listings">
+		<div class="list-group-item">
+			<h2 class="list-group-item-heading">{{l.title}}</h2>
+			<p class="list-group-item-text">{{l.flat.district}}, {{l.flat.city}}</p>
+			<p class="list-group-item-text">{{l.price}}</p>
+		</div>
+	</div>
+	
+</div>

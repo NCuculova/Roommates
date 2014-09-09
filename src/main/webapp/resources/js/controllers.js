@@ -213,8 +213,8 @@ RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 		} ]);
 
 RM.controller('AllListingsController', [ '$scope', '$rootScope', '$modal',
-		'Listing', 'FlatImage',
-		function($scope, $rootScope, $modal, Listing, FlatImage) {
+		'Listing', 'FlatImage', 'ListLook',
+		function($scope, $rootScope, $modal, Listing, FlatImage, ListLook) {
 			$scope.listings = Listing.query();
 
 			// creates modal window for adding listings
@@ -242,14 +242,16 @@ RM.controller('AllListingsController', [ '$scope', '$rootScope', '$modal',
 			};
 			
 			$scope.$on('memberLoaded', function() {
-				$scope.memberProfile = MemberProfile.findByMemberId({
-					id : $rootScope.member.id
-				});
+				//add new list look
+				$scope.addNewListLook = function(l){
+					$scope.listLook = {};
+					$scope.listLook.member =$rootScope.member;
+					$scope.listLook.listing=l;
+					ListLook.save($scope.listLook);
+					
+				};
 			});
 			
-			//add new list look
-			$scope.addNewListLook = function(l){
-				
-			};
+			
 		} ]);
 
