@@ -21,8 +21,12 @@ RM.config([ '$routeProvider', '$locationProvider',
 				templateUrl : 'views/listings.html',
 				controller : 'ListingController'
 			}).when('/listingProfile', {
-				//controller : 'ListingProfileController',
+				controller : 'ListingProfileController',
 				templateUrl : 'views/listingProfile.html',
+				publicPage : true
+			}).when('/allListings', {
+				controller : 'AllListingsController',
+				templateUrl : 'views/allListings.html',
 				publicPage : true
 			}).when('/addFlat', {
 				templateUrl : 'views/addFlat.html',
