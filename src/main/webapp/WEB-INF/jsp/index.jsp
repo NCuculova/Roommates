@@ -46,20 +46,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a ng-class="{ active: isActive('/allListings')}" class="navbar-brand" href="#/allListings">Roommates</a>
+          <a ng-class="{ active: isActive('/allListings')}" class="navbar-brand" href="#/allListings">All Listings</a>
         </div>
         <div class="navbar-collapse collapse">
 		<ul class="nav navbar-nav">
         	<li ng-class="{ active: isActive('/memberProfile')}"><a href="#/memberProfile">My profile</a></li>
         </ul>
         <ul class="nav navbar-nav">
-        	<li ng-class="{ active: isActive('/addFlat')}"><a href="#/addFlat">My place</a></li>
+        	<li ng-class="{ active: isActive('/addFlat')}"><a href="#/addFlat">My places</a></li>
         </ul>
         <ul class="nav navbar-nav">
-        	<li ng-class="{ active: isActive('/listings')}"><a href="#/listings">List my place</a></li>
-        </ul>
-        <ul class="nav navbar-nav">
-        	<li ng-class="{ active: isActive('/listingProfile')}"><a href="#/listingProfile">Listing profile</a></li>
+        	<li ng-class="{ active: isActive('/listings')}"><a href="#/listings">Add Listing</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
 

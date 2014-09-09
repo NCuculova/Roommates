@@ -20,10 +20,6 @@ RM.config([ '$routeProvider', '$locationProvider',
 			}).when('/listings', {
 				templateUrl : 'views/listings.html',
 				controller : 'ListingController'
-			}).when('/listingProfile', {
-				controller : 'ListingProfileController',
-				templateUrl : 'views/listingProfile.html',
-				publicPage : true
 			}).when('/allListings', {
 				controller : 'AllListingsController',
 				templateUrl : 'views/allListings.html',

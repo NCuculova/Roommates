@@ -240,9 +240,16 @@ RM.controller('AllListingsController', [ '$scope', '$rootScope', '$modal',
 				
 				
 			};
+			
+			$scope.$on('memberLoaded', function() {
+				$scope.memberProfile = MemberProfile.findByMemberId({
+					id : $rootScope.member.id
+				});
+			});
+			
+			//add new list look
+			$scope.addNewListLook = function(l){
+				
+			};
 		} ]);
 
-RM.controller('ListingProfileController', [ '$scope', 'Listing',
-		function($scope, Listing) {
-
-		} ]);
