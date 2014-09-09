@@ -3,11 +3,12 @@
 	<h4 class="modal-title">Upload images</h4>
 </div>
 <div class="modal-body">
+		<carousel interval="5000"> <slide
+			ng-repeat="image in images" active="image.active"> 
+			<img ng-src="{{ basePath }}/flatImage/download/{{image.id}}"
+			alt="flat image" class="img-thumbnail"> </slide> </carousel>
 	<div class="form-group">
-		<img ng-repeat="image in images" ng-src="{{ basePath }}/flatImage/download/{{image.id}}" alt="flat image" class="img-thumbnail">
-	</div>
-	<div class="form-group">
-		<label for="image">File input</label> <input type="file"
+		<label for="image">File input {{basePath}}</label> <input type="file"
 			ng-file-select="onFileSelect($files)">
 	</div>
 </div>

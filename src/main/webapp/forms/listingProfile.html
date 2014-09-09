@@ -1,0 +1,35 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="$hide()">&times;</button>
+	<h4 class="modal-title">Add flat to list</h4>
+</div>
+<form name="listingProfile" role="form">
+	<div class="modal-body">
+		<div>Contact: {{listing.member.email}}</div>
+		<carousel interval="5000"> <slide
+			ng-repeat="image in images" active="image.active"> <img
+			ng-src="{{ basePath }}/flatImage/download/{{image.id}}"
+			alt="flat image" class="img-thumbnail"> </slide> </carousel>
+		<div>Address: {{listing.flat.address}},
+			{{listing.flat.district}}, {{listing.flat.city}}</div>
+		<div class="row">
+			<div class="col-xs-6 col-md-4">Area: {{listing.flat.area}}</div>
+			<div class="col-xs-6 col-md-4">Number of rooms:
+				{{listing.flat.numRooms}}</div>
+			<div class="col-xs-6 col-md-4">Heating:
+				{{listing.flat.heating}}</div>
+		</div>
+		<div>
+			Aditional info:
+			<p>{{listing.information}}</p>
+		</div>
+		<div>
+			<h3>Price: {{listing.price}}</h3>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="submit" ng-click="addNewListLook(listing)"
+			class="btn btn-primary">
+			<i class="fa fa-fw fa-save"></i> Like
+		</button>
+	</div>
+</form>

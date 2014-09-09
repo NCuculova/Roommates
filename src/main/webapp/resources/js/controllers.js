@@ -216,7 +216,6 @@ RM.controller('AllListingsController', [ '$scope', '$rootScope', '$modal',
 		'Listing', 'FlatImage',
 		function($scope, $rootScope, $modal, Listing, FlatImage) {
 			$scope.listings = Listing.query();
-			
 
 			// creates modal window for adding listings
 			$scope.modalCreate = $modal({
