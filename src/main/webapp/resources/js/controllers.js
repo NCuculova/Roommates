@@ -256,16 +256,18 @@ RM.controller('AllListingsController', [ '$scope', '$rootScope', '$modal',
 			};
 			
 			$scope.$on('memberLoaded', function() {
-				//add new list look
-				$scope.addNewListLook = function(l){
-					$scope.listLook = {};
-					$scope.listLook.member =$rootScope.member;
-					$scope.listLook.listing=l;
-					ListLook.save($scope.listLook);
-					
-				};
+				
 			});
 			
+			//add new list look
+			$scope.addNewListLook = function(l){
+				$scope.listLook = {} ;
+				$scope.listLook.member = $rootScope.member;
+				$scope.listLook.listing = l;
+				$scope.listLook.date = new Date();
+				ListLook.save($scope.listLook);	
+				$scope.modalCreate.hide();
+			};
 			
 		} ]);
 

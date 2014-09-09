@@ -20,8 +20,8 @@ public class ListLook extends BaseEntity {
 	@ManyToOne
 	private Member member;
 	
+	private Date date;
 	
-
 	public Listing getListing() {
 		return listing;
 	}
@@ -38,6 +38,11 @@ public class ListLook extends BaseEntity {
 		this.member = member;
 	}
 
-	
-	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
 }
