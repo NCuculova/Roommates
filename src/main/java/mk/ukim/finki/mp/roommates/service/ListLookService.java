@@ -13,4 +13,6 @@ public interface ListLookService {
 	public ListLook findById(Long id);
 
 	public void delete(Long id);
+
+	public ListLook findByMemberIdAndListingId(Long id, Long id2);
 }

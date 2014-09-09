@@ -48,7 +48,7 @@ RM.factory('Listing', [ '$resource', function($resource) {
 } ]);
 
 RM.factory('ListLook', [ '$resource', function($resource) {
-	return $resource(RMUtil.ctx('/data/rest/listLook/:id'), {},{
+	return $resource(RMUtil.ctx('/data/rest/listingslook/:id'), {},{
 		
 	});
 } ]);

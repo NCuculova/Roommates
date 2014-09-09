@@ -28,7 +28,10 @@ public class ListLookResource {
 	@RequestMapping(method = RequestMethod.POST, produces = "application/json")
 	public ListLook create(@RequestBody @Valid ListLook entity) {
 		entity.setDate(new Date());
+		ListLook list =service.findByMemberIdAndListingId(entity.getListing().getId(),entity.getMember().getId());
+		if (list == null) {
 		service.save(entity);
+		}
 		return entity;
 	}
 

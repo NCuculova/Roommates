@@ -34,5 +34,10 @@ public class ListLookServiceImpl implements ListLookService{
 		listLookRepository.delete(id);
 	}
 
+	@Override
+	public ListLook findByMemberIdAndListingId(Long id, Long id2) {
+		return listLookRepository.findByMemberIdAndListingId(id,id2);
+	}
+
 	
 }
