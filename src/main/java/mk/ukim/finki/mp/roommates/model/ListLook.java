@@ -20,6 +20,7 @@ public class ListLook extends BaseEntity {
 	@ManyToOne
 	private Member member;
 	
+	@JsonSerialize(using = CustomLocalDateSerializer.class)
 	private Date date;
 	
 	public Listing getListing() {

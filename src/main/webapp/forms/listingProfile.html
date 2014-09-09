@@ -2,7 +2,8 @@
 	<button type="button" class="close" ng-click="$hide()">&times;</button>
 	<h4 class="modal-title">Add flat to list</h4>
 </div>
-<form name="listingProfile" role="form" ng-submit="addNewListLook(listing)">
+<form name="listingProfile" role="form"
+	ng-submit="addNewListLook(listing)">
 	<div class="modal-body">
 		<div>Contact: {{listing.member.email}}</div>
 		<carousel interval="5000"> <slide
@@ -27,8 +28,7 @@
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button type="submit" 
-			class="btn btn-primary">
+		<button type="submit" ng-click="addNewListLook(listing)" class="btn btn-primary">
 			<i class="fa fa-fw fa-save"></i> Like
 		</button>
 	</div>

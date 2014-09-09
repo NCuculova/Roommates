@@ -54,8 +54,7 @@ RM.controller('SignupController', [ '$scope', 'Member', 'toaster',
 RM.controller('MemberProfileController', [ '$scope', '$rootScope',
 		'MemberProfile', function($scope, $rootScope, MemberProfile) {
 			$scope.memberProfile = {};
-			// wait for the event 'memberLoaded'
-			$scope.$on('memberLoaded', function() {
+			$rootScope.getMember(function(data) {
 				$scope.memberProfile = MemberProfile.findByMemberId({
 					id : $rootScope.member.id
 				});
@@ -78,9 +77,9 @@ RM.controller('FlatController', [
 		function($scope, $rootScope, $upload, $modal, Flat, FlatImage) {
 			$scope.flat = {};
 			// find all flats that belong to the signed in member
-			$scope.$on('memberLoaded', function() {
+			$rootScope.getMember(function(data) {
 				$scope.flats = Flat.findAllByMemberId({
-					id : $rootScope.member.id
+					id : data.member.id
 				});
 			});
 			$scope.saveNewFlat = function() {
@@ -166,9 +165,9 @@ RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 		'Listing', 'Flat', function($scope, $rootScope, $modal, Listing, Flat) {
 
 			// find all flats that belong to the signed in member
-			$scope.$on('memberLoaded', function() {
+			$rootScope.getMember(function(data) {
 				$scope.flats = Flat.findAllByMemberId({
-					id : $rootScope.member.id
+					id : data.member.id
 				});
 				$scope.listings = Listing.findAllByMemberId({
 					id : $rootScope.member.id
@@ -212,9 +211,15 @@ RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 
 		} ]);
 
-RM.controller('AllListingsController', [ '$scope', '$rootScope', '$modal',
-		'Listing', 'FlatImage', 'ListLook',
-		function($scope, $rootScope, $modal, Listing, FlatImage, ListLook) {
+RM.controller('AllListingsController', [
+		'$scope',
+		'$rootScope',
+		'$modal',
+		'$location',
+		'Listing',
+		'FlatImage',
+		'ListLook',
+		function($scope, $rootScope, $modal, $location, Listing, FlatImage, ListLook) {
 			$scope.listings = Listing.query();
 
 			// creates modal window for adding listings
@@ -237,37 +242,41 @@ RM.controller('AllListingsController', [ '$scope', '$rootScope', '$modal',
 						id : l.flat.id
 					});
 				});
-				
-				
+
 			};
-			
-			$scope.checkDate = function(dateTo) { //if the advertisment is expired 
+
+			/*$scope.checkDate = function(dateTo) { // if the advertisment is
+				// expired
 				var currentDate = new Date();
 				var endDate = new Date(Date.parse(dateTo.toString()));
-				var dateOne = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDay()); //Year, Month, Date
-			    var dateTwo = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDay()); //Year, Month, Date
-			       if (dateOne < dateTwo) {
-			            return false;
-			        }else {
-			            return true;
-			        }
-			       // ovoj red da se dodade ako sakame za da pisuva expired 
-					//<h4 style="color:red;" ng-show="checkDate(l.dateTo)">Expired</h4>
-			};
+				var dateOne = new Date(currentDate.getFullYear(), currentDate
+						.getMonth(), currentDate.getDay()); // Year, Month, Date
+				var dateTwo = new Date(endDate.getFullYear(), endDate
+						.getMonth(), endDate.getDay()); // Year, Month, Date
+				if (dateOne < dateTwo) {
+					return false;
+				} else {
+					return true;
+				}
+				// ovoj red da se dodade ako sakame za da pisuva expired
+				// <h4 style="color:red;"
+				// ng-show="checkDate(l.dateTo)">Expired</h4>
+			};*/
 			
-			$scope.$on('memberLoaded', function() {
-				
+			$rootScope.getMember(function(data) {
+				if (!data.success)
+					$location.path('/login');
+				// add new list look
+				$scope.addNewListLook = function(l) {
+					$scope.listLook = {};
+					$scope.listLook.member = data.member.id;
+					$scope.listLook.listing = l;
+					$scope.listLook.date = new Date();
+					ListLook.save($scope.listLook);
+					$scope.modalCreate.hide();
+				};
+
 			});
-			
-			//add new list look
-			$scope.addNewListLook = function(l){
-				$scope.listLook = {} ;
-				$scope.listLook.member = $rootScope.member;
-				$scope.listLook.listing = l;
-				$scope.listLook.date = new Date();
-				ListLook.save($scope.listLook);	
-				$scope.modalCreate.hide();
-			};
+		
 			
 		} ]);
-
