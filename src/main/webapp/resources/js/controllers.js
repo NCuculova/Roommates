@@ -221,6 +221,7 @@ RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 					}
 				}
 				return true;
+<<<<<<< HEAD
 			};
 */
 			
@@ -234,4 +235,4 @@ RM.controller('AllListingsController', [ '$scope', '$rootScope', '$modal',
 
 RM.controller('ListingProfileController', ['$scope', 'Listing', function($scope, Listing){
 
-		} ]);
+}]);
