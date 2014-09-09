@@ -213,8 +213,33 @@ RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 		} ]);
 
 RM.controller('AllListingsController', [ '$scope', '$rootScope', '$modal',
-		'Listing', function($scope, $rootScope, $modal, Listing) {
+		'Listing', 'FlatImage',
+		function($scope, $rootScope, $modal, Listing, FlatImage) {
 			$scope.listings = Listing.query();
+
+			// creates modal window for adding listings
+			$scope.modalCreate = $modal({
+				scope : $scope,
+				template : 'templates/modal-form-notitle.tpl.html',
+				contentTemplate : 'forms/listingProfile.html',
+				show : false
+			});
+
+			// show modal window
+			$scope.showListingForm = function(l) {
+				$scope.basePath = RMUtil.basePath;
+
+				$scope.listing = Listing.get({
+					id : l.id
+				}, function(data) {
+					$scope.modalCreate.show();
+					$scope.images = FlatImage.getImagesByFlatId({
+						id : l.flat.id
+					});
+				});
+				
+				
+			};
 		} ]);
 
 RM.controller('ListingProfileController', [ '$scope', 'Listing',
