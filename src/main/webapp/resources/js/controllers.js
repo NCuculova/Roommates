@@ -209,5 +209,18 @@ RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 					$scope.modalCreate.show();
 				});
 			};
+			
+			$scope.checkDate = function(dateTo) {
+				var currentDate = new Date();
+				var endDate = dateTo;
+				if(currentDate.getYear() > endDate.getYear()){
+					if(currentDate.getMonth() > endDate.getMonth()){
+						if(currentDate.getDate() > endDate.getDate()){
+							return false;
+						}
+					}
+				}
+				return true;
+			}
 
 		} ]);

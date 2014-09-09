@@ -29,7 +29,7 @@
 			<th>Price</th>
 			<th>Edit list</th>
 		</tr>
-		<tr ng-repeat="list in listings">
+		<tr ng-repeat="list in listings" ng-hide="checkDate(list.dateTo)">
 			<td>{{list.title}}</td>
 			<td>{{list.dateFrom | date : 'd'}} - {{list.dateTo | date : 'd MMM yyyy'}} </td>
 			<td>{{list.price}} euro</td>
