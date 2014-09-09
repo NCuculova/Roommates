@@ -48,11 +48,13 @@ public class ListingResource {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
 	public void delete(@PathVariable Long id, HttpServletResponse response) {
-
 		service.delete(id);
 	}
 
-	
+	@RequestMapping(value = "/member/{id}", method = RequestMethod.GET, produces = "application/json")
+	public List<Listing> findAllByMemberId(@PathVariable Long id, HttpServletResponse response) {
+		return service.findAllByMemberId(id);
+	}
 	/*
 	 * @RequestMapping(value = "/active", method = RequestMethod.GET, produces =
 	 * "application/json") public List<Listing> findAllByDate() { return

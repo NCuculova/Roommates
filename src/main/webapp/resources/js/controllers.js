@@ -164,7 +164,7 @@ RM.controller('FlatController', [
 
 RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 		'Listing', 'Flat', function($scope, $rootScope, $modal, Listing, Flat) {
-	
+
 			// find all flats that belong to the signed in member
 			$scope.$on('memberLoaded', function() {
 				$scope.flats = Flat.findAllByMemberId({
@@ -200,39 +200,24 @@ RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 					$scope.modalCreate.hide();
 				});
 			};
-			
+
 			// get list for edit
-			$scope.editList = function(listId){
+			$scope.editList = function(listId) {
 				$scope.listing = Listing.get({
 					id : listId
 				}, function(data) {
 					$scope.modalCreate.show();
 				});
 			};
-			
-			/*$scope.checkDate = function(dateTo) {
-				var currentDate = new Date();
-				var endDate = dateTo;
-				if(currentDate.getYear() > endDate.getYear()){
-					if(currentDate.getMonth() > endDate.getMonth()){
-						if(currentDate.getDate() > endDate.getDate()){
-							return false;
-						}
-					}
-				}
-				return true;
-<<<<<<< HEAD
-			};
-*/
-			
 
 		} ]);
 
 RM.controller('AllListingsController', [ '$scope', '$rootScope', '$modal',
-                             		'Listing', function($scope, $rootScope, $modal, Listing) {
-	$scope.listings = Listing.query();
-}]);
+		'Listing', function($scope, $rootScope, $modal, Listing) {
+			$scope.listings = Listing.query();
+		} ]);
 
-RM.controller('ListingProfileController', ['$scope', 'Listing', function($scope, Listing){
+RM.controller('ListingProfileController', [ '$scope', 'Listing',
+		function($scope, Listing) {
 
-}]);
+		} ]);
