@@ -241,6 +241,20 @@ RM.controller('AllListingsController', [ '$scope', '$rootScope', '$modal',
 				
 			};
 			
+			$scope.checkDate = function(dateTo) { //if the advertisment is expired 
+				var currentDate = new Date();
+				var endDate = new Date(Date.parse(dateTo.toString()));
+				var dateOne = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDay()); //Year, Month, Date
+			    var dateTwo = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDay()); //Year, Month, Date
+			       if (dateOne < dateTwo) {
+			            return false;
+			        }else {
+			            return true;
+			        }
+			       // ovoj red da se dodade ako sakame za da pisuva expired 
+					//<h4 style="color:red;" ng-show="checkDate(l.dateTo)">Expired</h4>
+			};
+			
 			$scope.$on('memberLoaded', function() {
 				//add new list look
 				$scope.addNewListLook = function(l){
