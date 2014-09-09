@@ -219,8 +219,17 @@ RM.controller('AllListingsController', [
 		'Listing',
 		'FlatImage',
 		'ListLook',
-		function($scope, $rootScope, $modal, $location, Listing, FlatImage, ListLook) {
+		function($scope, $rootScope, $modal, $location, Listing, FlatImage,
+				ListLook) {
+
 			$scope.listings = Listing.query();
+			
+			$rootScope.getMember(function(data) {
+				$scope.data = data;
+				console.log(data);
+			});
+
+			
 
 			// creates modal window for adding listings
 			$scope.modalCreate = $modal({
@@ -245,38 +254,32 @@ RM.controller('AllListingsController', [
 
 			};
 
-			/*$scope.checkDate = function(dateTo) { // if the advertisment is
-				// expired
-				var currentDate = new Date();
-				var endDate = new Date(Date.parse(dateTo.toString()));
-				var dateOne = new Date(currentDate.getFullYear(), currentDate
-						.getMonth(), currentDate.getDay()); // Year, Month, Date
-				var dateTwo = new Date(endDate.getFullYear(), endDate
-						.getMonth(), endDate.getDay()); // Year, Month, Date
-				if (dateOne < dateTwo) {
-					return false;
-				} else {
-					return true;
-				}
-				// ovoj red da se dodade ako sakame za da pisuva expired
-				// <h4 style="color:red;"
-				// ng-show="checkDate(l.dateTo)">Expired</h4>
-			};*/
-			
-			$rootScope.getMember(function(data) {
-				if (!data.success)
+			/*
+			 * $scope.checkDate = function(dateTo) { // if the advertisment is //
+			 * expired var currentDate = new Date(); var endDate = new
+			 * Date(Date.parse(dateTo.toString())); var dateOne = new
+			 * Date(currentDate.getFullYear(), currentDate .getMonth(),
+			 * currentDate.getDay()); // Year, Month, Date var dateTwo = new
+			 * Date(endDate.getFullYear(), endDate .getMonth(),
+			 * endDate.getDay()); // Year, Month, Date if (dateOne < dateTwo) {
+			 * return false; } else { return true; } // ovoj red da se dodade
+			 * ako sakame za da pisuva expired // <h4 style="color:red;" //
+			 * ng-show="checkDate(l.dateTo)">Expired</h4> };
+			 */
+
+			// add new list look
+			$scope.addNewListLook = function(l) {
+				if (!$scope.data.success) {
 					$location.path('/login');
-				// add new list look
-				$scope.addNewListLook = function(l) {
+				} else {
+					console.log("addingg");
 					$scope.listLook = {};
-					$scope.listLook.member = data.member.id;
+					$scope.listLook.member = $scope.data.member;
 					$scope.listLook.listing = l;
-					$scope.listLook.date = new Date();
+					//$scope.listLook.date = new Date();
 					ListLook.save($scope.listLook);
 					$scope.modalCreate.hide();
-				};
+				}
+			};
 
-			});
-		
-			
 		} ]);

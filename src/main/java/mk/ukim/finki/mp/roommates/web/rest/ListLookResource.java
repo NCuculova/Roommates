@@ -2,6 +2,7 @@ package mk.ukim.finki.mp.roommates.web.rest;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -20,35 +21,36 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/data/rest/listingslook")
 public class ListLookResource {
-	
+
 	@Autowired
 	private ListLookService service;
-	
+
 	@RequestMapping(method = RequestMethod.POST, produces = "application/json")
-	public ListLook create(@RequestBody @Valid ListLook entity){
+	public ListLook create(@RequestBody @Valid ListLook entity) {
+		entity.setDate(new Date());
 		service.save(entity);
 		return entity;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
-	public List<ListLook> getAll(){
+	public List<ListLook> getAll() {
 		Collection<ListLook> listingsLook = service.findAll();
 		return new ArrayList<ListLook>(listingsLook);
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-	public ListLook get(@PathVariable Long id, HttpServletResponse response){
+	public ListLook get(@PathVariable Long id, HttpServletResponse response) {
 		ListLook listing = service.findById(id);
-		if (listing == null){
+		if (listing == null) {
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 		}
 		return listing;
-		
+
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
 	public void delete(@PathVariable Long id, HttpServletResponse response) {
 		service.delete(id);
 	}
-	
+
 }

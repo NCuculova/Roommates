@@ -22,6 +22,7 @@ RM.run(function($rootScope, $location, $cookieStore, toaster, Member) {
 
 	$rootScope.getMember = function(callback) {
 		var token = $cookieStore.get("token");
+		console.log(token);
 		if (token) {
 			Member.auth({
 				token : token
@@ -31,6 +32,12 @@ RM.run(function($rootScope, $location, $cookieStore, toaster, Member) {
 				if (callback && typeof callback === 'function')
 					callback(data);
 			});
+		}
+		else{
+			var data = {};
+			data.success = false;
+			if (callback && typeof callback === 'function')
+				callback(data);
 		}
 	};
 	var validateToken = function() {
