@@ -55,6 +55,7 @@ public class ListingResource {
 	public List<Listing> findAllByMemberId(@PathVariable Long id, HttpServletResponse response) {
 		return service.findAllByMemberId(id);
 	}
+	
 	/*
 	 * @RequestMapping(value = "/active", method = RequestMethod.GET, produces =
 	 * "application/json") public List<Listing> findAllByDate() { return
