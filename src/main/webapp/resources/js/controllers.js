@@ -210,7 +210,7 @@ RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 				});
 			};
 			
-			$scope.checkDate = function(dateTo) {
+			/*$scope.checkDate = function(dateTo) {
 				var currentDate = new Date();
 				var endDate = dateTo;
 				if(currentDate.getYear() > endDate.getYear()){
@@ -221,6 +221,17 @@ RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 					}
 				}
 				return true;
-			}
+			};
+*/
+			
+
+		} ]);
+
+RM.controller('AllListingsController', [ '$scope', '$rootScope', '$modal',
+                             		'Listing', function($scope, $rootScope, $modal, Listing) {
+	$scope.listings = Listing.query();
+}]);
+
+RM.controller('ListingProfileController', ['$scope', 'Listing', function($scope, Listing){
 
 		} ]);
