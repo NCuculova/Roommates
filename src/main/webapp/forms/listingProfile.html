@@ -5,7 +5,7 @@
 <form name="listingProfile" role="form"
 	ng-submit="addNewListLook(listing)">
 	<div class="modal-body">
-		<div><label class="control-label">Contact:</label> {{listing.member.email}}</div>
+		<div><label class="control-label"><span class="glyphicon glyphicon-envelope"></span> Contact:</label> {{listing.member.email}}</div>
 		<carousel interval="5000"> <slide
 			ng-repeat="image in images" active="image.active"> <img
 			ng-src="{{ basePath }}/flatImage/download/{{image.id}}"
@@ -28,7 +28,7 @@
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button  class="btn btn-info btn-lg">
+		<button  type="submit" class="btn btn-info btn-lg">
 			<span class="glyphicon glyphicon-star-empty"></span> Bookmark
 		</button>
 	</div>
