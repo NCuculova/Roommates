@@ -17,6 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * RestController with adequate CRUD methods for Listing 
+ * Added method for getting list of Listings by a given Member ID
+ */
+
 @RestController
 @RequestMapping("/data/rest/listings")
 public class ListingResource {
@@ -51,6 +56,13 @@ public class ListingResource {
 		service.delete(id);
 	}
 
+	
+	/**
+	 * Method for getting list of Listings by a given Member ID
+	 * Input: Member ID
+	 * Output: List of Listings
+	 */
+	
 	@RequestMapping(value = "/member/{id}", method = RequestMethod.GET, produces = "application/json")
 	public List<Listing> findAllByMemberId(@PathVariable Long id, HttpServletResponse response) {
 		return service.findAllByMemberId(id);

@@ -17,6 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * RestController with adequate CRUD methods for MemberProfile 
+ * Added method for getting the profile of a Member by a given Member ID
+ */
+
+
 @RestController
 @RequestMapping("/data/rest/memberProfile")
 public class MemberProfileResource {
@@ -44,7 +50,17 @@ public class MemberProfileResource {
 		}
 		return memberProfile;
 	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
+	public void delete(@PathVariable Long id, HttpServletResponse response) {
+		service.delete(id);
+	}
 	
+	/**
+	 * Method for getting the profile of a Member by a given Member ID
+	 * Input: Member ID
+	 * Output: Member Profile
+	 */
 	@RequestMapping(value = "/member/{id}", method = RequestMethod.GET, produces = "application/json")
 	public MemberProfile getByMemberId(@PathVariable Long id, HttpServletResponse response) {
 		MemberProfile memberProfile = service.findByMemberId(id);
@@ -52,10 +68,5 @@ public class MemberProfileResource {
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 		}
 		return memberProfile;
-	}
-
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
-	public void delete(@PathVariable Long id, HttpServletResponse response) {
-		service.delete(id);
 	}
 }

@@ -20,13 +20,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * RestController with adequate CRUD methods for Member
+ */
+
 @RestController
 @RequestMapping("/data/rest/members")
 public class MembersResource {
 
 	@Autowired
 	private MembersService service;
-
+	
+	/**
+	 * Method for creating new member. Checks if the member exists (by the e-mail).
+	 * Input: Member
+	 * Output: HashMap (key:Member, value:success)
+	 */
 	@RequestMapping(method = RequestMethod.POST, produces = "application/json")
 	public Map<String, Object> create(@RequestBody @Valid Member entity) {
 		Map<String, Object> result = new HashMap<String, Object>();
@@ -63,6 +72,11 @@ public class MembersResource {
 		service.delete(id);
 	}
 
+	/**
+	 * Method for login. Checks if the member exists (by the e-mail and password).
+	 * Input: Member
+	 * Output: HashMap (key:Member, value:success)
+	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
 	public Map<String, Object> login(@RequestBody @Valid Member entity) {
 		Map<String, Object> result = new HashMap<String, Object>();
@@ -78,6 +92,11 @@ public class MembersResource {
 		return result;
 	}
 
+	/**
+	 * Method for authentication of token. Checks if the token is valid.
+	 * Input: HashMap (key:Member, value:success)
+	 * Output: HashMap (key:Member, value:success)
+	 */
 	@RequestMapping(value = "/auth", method = RequestMethod.POST, produces = "application/json")
 	public Map<String, Object> auth(@RequestBody Map<String, String> request) {
 		String token = request.get("token");

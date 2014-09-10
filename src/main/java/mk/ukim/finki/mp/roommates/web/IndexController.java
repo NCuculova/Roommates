@@ -17,18 +17,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+
+
 @Controller
 public class IndexController {
 
 	@Autowired
 	FlatImageService flatImageService;
 
+	/**
+	 * Method that loads index.jsp on page load and refresh
+	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {
 		ModelAndView result = new ModelAndView("index");
 		return result;
 	}
 
+	/**
+	 * Method for downloading image. Uses writeFileToResponse.
+	 * Input: ID of an image
+	 * Output: null
+	 */
 	@RequestMapping("/flatImage/download/{id}")
 	public String downloadImageById(@PathVariable("id") Long id,
 			HttpServletResponse response) {
@@ -37,6 +47,11 @@ public class IndexController {
 		return null;
 	}
 
+	/**
+	 * Method that gets image in the server response
+	 * Input: Flat Image
+	 * Output: none
+	 */
 	private void writeFileToResponse(FlatImage flatImage,
 			HttpServletResponse response) {
 		try {

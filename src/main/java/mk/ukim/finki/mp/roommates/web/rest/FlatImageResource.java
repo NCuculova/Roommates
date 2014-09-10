@@ -24,6 +24,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+/**
+ * RestController with adequate CRUD methods for FlatImages 
+ * Added method for uploading and getting images by a given FLat ID 
+ */
 
 @RestController
 @RequestMapping("/data/rest/flatImages")
@@ -61,6 +65,11 @@ public class FlatImageResource {
 		service.delete(id);
 	}
 	
+	/**
+	 * Method for uploading images 
+	 * Input: File and image id
+	 * Output: FlatImage
+	 */
 	@RequestMapping(value = "/upload/{id}", method = RequestMethod.POST, produces = "application/json")
 	// the method return value should be bound to the web responce body
 	@ResponseBody
@@ -76,6 +85,11 @@ public class FlatImageResource {
 		return flatImage;
 	}
 	
+	/**
+	 * Method for getting list of images by a given Flat ID 
+	 * Input: Image ID
+	 * Output: List of FlatImages
+	 */
 	@RequestMapping(value="/image/{id}", method = RequestMethod.GET, produces = "application/json")
 	public List<FlatImage> getImagesByFlatId(@PathVariable Long id) {
 		return service.getImagesByFlatId(id);

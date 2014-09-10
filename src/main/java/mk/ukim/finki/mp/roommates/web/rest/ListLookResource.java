@@ -18,6 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * RestController with adequate CRUD methods for Bookmarked Listings 
+ * Added method for getting list of Bookmarked Listings by a given Member ID
+ */
+
+
 @RestController
 @RequestMapping("/data/rest/listingslook")
 public class ListLookResource {
@@ -50,17 +56,22 @@ public class ListLookResource {
 		return listing;
 
 	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
+	public void delete(@PathVariable Long id, HttpServletResponse response) {
+		service.delete(id);
+	}
 
+	/**
+	 * Added method for getting list of Bookmarked Listings by a given Member ID
+	 * Input: Member ID
+	 * Output: List of Bookmarked Listings
+	 */
 	@RequestMapping(value = "/member/{id}", method = RequestMethod.GET, produces = "application/json")
 	public List<ListLook> getAllByMemberId(@PathVariable Long id, HttpServletResponse response) {
 		List<ListLook> listings = service.findAllByMemberId(id);
 		return listings;
 
-	}
-	
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
-	public void delete(@PathVariable Long id, HttpServletResponse response) {
-		service.delete(id);
 	}
 
 }
