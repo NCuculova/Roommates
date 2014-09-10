@@ -1,13 +1,30 @@
 <div class="page-header">
 	<h1>Bookmarks</h1>
 </div>
-<div class="col-md-8">
-	<div class="list-group" ng-repeat="l in likedListings" ng-hide="checkDate(l.dateTo)">
+<div class="centerNas">
+	<div class="list-group" ng-repeat="l in likedListings">
 		<div class="list-group-item">
-			<h2 class="list-group-item-heading">{{l.listing.title}}</h2>
-			<p class="list-group-item-text">{{l.listing.flat.district}}, {{l.listing.flat.city}}</p>
-			<p class="list-group-item-text">{{l.listing.price}}</p>
+			<h2 class="list-group-item-heading">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				{{l.listing.title}}
+			</h2>
+			<p class="list-group-item-text pNas">
+			<h4 class="pNas">
+				<label> Address: </label> {{l.listing.flat.address}}
+			</h4>
+			</p>
+			<p class="list-group-item-text">
+			<h4 class="pNas">
+				<label> District: </label> {{l.listing.flat.district}},
+				{{l.listing.flat.city}}
+			</h4>
+			</p>
+			<p class="list-group-item-text">
+			<h4 class="pNas">
+				<label> Price: </label> {{l.listing.price}} euro
+			</h4>
+			</p>
 		</div>
 	</div>
-	
+
 </div>
