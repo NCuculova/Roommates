@@ -2,7 +2,7 @@
 	<h1><i class="glyphicon glyphicon-th-list blue"></i> Listings</h1>
 </div>
 <div class="centerNas">
-	<div class="list-group" ng-repeat="l in listings">
+	<div class="list-group" ng-repeat="l in listings" ng-hide="checkDate(l.dateTo)">
 		<div class="list-group-item">
 			<h2 class="list-group-item-heading">
 				<span class="glyphicon glyphicon-chevron-right blue"></span> {{l.title}}
