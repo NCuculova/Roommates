@@ -39,5 +39,10 @@ public class ListLookServiceImpl implements ListLookService{
 		return listLookRepository.findByMemberIdAndListingId(id,id2);
 	}
 
+	@Override
+	public List<ListLook> findAllByMemberId(Long id) {
+		return listLookRepository.findByMemberId(id);
+	}
+
 	
 }

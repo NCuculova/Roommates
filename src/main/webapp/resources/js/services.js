@@ -49,7 +49,11 @@ RM.factory('Listing', [ '$resource', function($resource) {
 
 RM.factory('ListLook', [ '$resource', function($resource) {
 	return $resource(RMUtil.ctx('/data/rest/listingslook/:id'), {},{
-		
+		'getAllByMemberId':{
+			method : 'GET',
+			isArray: true,
+			url : RMUtil.ctx('/data/rest/listingslook/member/:id')
+		}
 	});
 } ]);
 

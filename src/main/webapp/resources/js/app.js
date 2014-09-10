@@ -28,7 +28,7 @@ RM.run(function($rootScope, $location, $cookieStore, toaster, Member) {
 				token : token
 			}, function(data) {
 				// Member has valid cookie
-
+				$rootScope.member = data.member;
 				if (callback && typeof callback === 'function')
 					callback(data);
 			});

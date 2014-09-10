@@ -27,5 +27,8 @@ RM.config([ '$routeProvider', '$locationProvider',
 			}).when('/addFlat', {
 				templateUrl : 'views/addFlat.html',
 				controller : 'FlatController'
+			}).when('/bookmarks', {
+				templateUrl : 'views/likedListings.html',
+				controller : 'BookmarkListingController'
 			}).otherwise({redirectTo: '/'});
 		} ]);

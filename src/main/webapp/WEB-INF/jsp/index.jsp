@@ -58,6 +58,9 @@
         <ul class="nav navbar-nav">
         	<li ng-class="{ active: isActive('/listings')}"><a href="#/listings">Add Listing</a></li>
         </ul>
+        <ul class="nav navbar-nav">
+        	<li ng-class="{ active: isActive('/bookmarks')}"><a href="#/bookmarks">My bookmarks</a></li>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
 
             <li ng-show="!$root.member" ng-class="{ active: isActive('/login')} "><a href="#/login">Log In</a></li>

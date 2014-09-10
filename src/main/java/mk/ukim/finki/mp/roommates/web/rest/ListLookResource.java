@@ -28,7 +28,7 @@ public class ListLookResource {
 	@RequestMapping(method = RequestMethod.POST, produces = "application/json")
 	public ListLook create(@RequestBody @Valid ListLook entity) {
 		entity.setDate(new Date());
-		ListLook list =service.findByMemberIdAndListingId(entity.getListing().getId(),entity.getMember().getId());
+		ListLook list =service.findByMemberIdAndListingId(entity.getMember().getId(),entity.getListing().getId());
 		if (list == null) {
 		service.save(entity);
 		}
@@ -51,6 +51,13 @@ public class ListLookResource {
 
 	}
 
+	@RequestMapping(value = "/member/{id}", method = RequestMethod.GET, produces = "application/json")
+	public List<ListLook> getAllByMemberId(@PathVariable Long id, HttpServletResponse response) {
+		List<ListLook> listings = service.findAllByMemberId(id);
+		return listings;
+
+	}
+	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
 	public void delete(@PathVariable Long id, HttpServletResponse response) {
 		service.delete(id);

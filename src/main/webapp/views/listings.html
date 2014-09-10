@@ -28,13 +28,17 @@
 			<th>Active</th>
 			<th>Price</th>
 			<th>Edit list</th>
+			<th>Delete list</th>
 		</tr>
 		<tr ng-repeat="list in listings">
 			<td>{{list.title}}</td>
-			<td>{{list.dateFrom | date : 'd'}} - {{list.dateTo | date : 'd MMM yyyy'}} </td>
+			<td>{{list.dateFrom | date : 'd'}} - {{list.dateTo | date : 'd
+				MMM yyyy'}}</td>
 			<td>{{list.price}} euro</td>
 			<td><button type="button" class="btn btn-default btn-xs"
 					ng-click="editList(list.id)">Edit</button></td>
+			<td><button type="button" class="btn btn-default btn-xs"
+					ng-click="deleteList(list.id)">Delete</button></td>
 		</tr>
 	</table>
 </div>

@@ -170,7 +170,7 @@ RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 					id : data.member.id
 				});
 				$scope.listings = Listing.findAllByMemberId({
-					id : $rootScope.member.id
+					id : data.member.id
 				});
 			});
 
@@ -209,6 +209,17 @@ RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 				});
 			};
 
+			// delete selected list
+			$scope.deleteList = function(listId) {
+				Listing.remove({
+					id : listId
+				}, function() {
+					$scope.listings = Listing.findAllByMemberId({
+						id : $rootScope.member.id
+					});
+				});
+			};
+
 		} ]);
 
 RM.controller('AllListingsController', [
@@ -223,13 +234,11 @@ RM.controller('AllListingsController', [
 				ListLook) {
 
 			$scope.listings = Listing.query();
-			
+
 			$rootScope.getMember(function(data) {
 				$scope.data = data;
-				console.log(data);
+				// console.log(data);
 			});
-
-			
 
 			// creates modal window for adding listings
 			$scope.modalCreate = $modal({
@@ -242,7 +251,6 @@ RM.controller('AllListingsController', [
 			// show modal window
 			$scope.showListingForm = function(l) {
 				$scope.basePath = RMUtil.basePath;
-
 				$scope.listing = Listing.get({
 					id : l.id
 				}, function(data) {
@@ -271,15 +279,27 @@ RM.controller('AllListingsController', [
 			$scope.addNewListLook = function(l) {
 				if (!$scope.data.success) {
 					$location.path('/login');
+					$scope.modalCreate.hide();
 				} else {
 					console.log("addingg");
 					$scope.listLook = {};
 					$scope.listLook.member = $scope.data.member;
 					$scope.listLook.listing = l;
-					//$scope.listLook.date = new Date();
 					ListLook.save($scope.listLook);
 					$scope.modalCreate.hide();
 				}
 			};
+
+		} ]);
+
+RM.controller('BookmarkListingController', [ '$scope', '$rootScope', '$modal',
+		'Listing', 'ListLook', function($scope, $rootScope, $modal, Listing, ListLook) {
+
+			// find all bookmarks that belong to the signed in member
+			$rootScope.getMember(function(data) {
+				$scope.likedListings = ListLook.getAllByMemberId({
+					id : data.member.id
+				});
+			});
 
 		} ]);
