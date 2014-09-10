@@ -46,7 +46,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a ng-class="{ active: isActive('/allListings')}" class="navbar-brand" href="#/allListings">All Listings</a>
+          <a ng-class="{ active: isActive('/allListings')}" class="navbar-brand" href="#/allListings"><b>All listings</b></a>
         </div>
         <div class="navbar-collapse collapse">
 		<ul class="nav navbar-nav">
@@ -56,7 +56,7 @@
         	<li ng-class="{ active: isActive('/addFlat')}"><a href="#/addFlat">My places</a></li>
         </ul>
         <ul class="nav navbar-nav">
-        	<li ng-class="{ active: isActive('/listings')}"><a href="#/listings">Add Listing</a></li>
+        	<li ng-class="{ active: isActive('/listings')}"><a href="#/listings">My listings</a></li>
         </ul>
         <ul class="nav navbar-nav">
         	<li ng-class="{ active: isActive('/bookmarks')}"><a href="#/bookmarks">My bookmarks</a></li>

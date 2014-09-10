@@ -5,30 +5,30 @@
 <form name="listingProfile" role="form"
 	ng-submit="addNewListLook(listing)">
 	<div class="modal-body">
-		<div>Contact: {{listing.member.email}}</div>
+		<div><label class="control-label">Contact:</label> {{listing.member.email}}</div>
 		<carousel interval="5000"> <slide
 			ng-repeat="image in images" active="image.active"> <img
 			ng-src="{{ basePath }}/flatImage/download/{{image.id}}"
 			alt="flat image" class="img-thumbnail"> </slide> </carousel>
-		<div>Address: {{listing.flat.address}},
+		<div><label class="control-label">Address:</label> {{listing.flat.address}},
 			{{listing.flat.district}}, {{listing.flat.city}}</div>
 		<div class="row">
-			<div class="col-xs-6 col-md-4">Area: {{listing.flat.area}}</div>
-			<div class="col-xs-6 col-md-4">Number of rooms:
+			<div class="col-xs-6 col-md-4"><label class="control-label">Area:</label> {{listing.flat.area}}</div>
+			<div class="col-xs-6 col-md-4"><label class="control-label">Number of rooms:</label>
 				{{listing.flat.numRooms}}</div>
-			<div class="col-xs-6 col-md-4">Heating:
+			<div class="col-xs-6 col-md-4"><label class="control-label">Heating:</label>
 				{{listing.flat.heating}}</div>
 		</div>
 		<div>
-			Aditional info:
+			<label class="control-label">Aditional info:</label>
 			<p>{{listing.information}}</p>
 		</div>
 		<div>
-			<h3>Price: {{listing.price}}</h3>
+			<h3><label class="control-label">Price:</label> {{listing.price}}</h3>
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button  class="btn btn-default btn-lg">
+		<button  class="btn btn-info btn-lg">
 			<span class="glyphicon glyphicon-star-empty"></span> Bookmark
 		</button>
 	</div>

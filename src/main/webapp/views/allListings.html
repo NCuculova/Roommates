@@ -1,11 +1,11 @@
 <div class="page-header">
-	<h1>Listings</h1>
+	<h1><i class="glyphicon glyphicon-th-list blue"></i> Listings</h1>
 </div>
 <div class="centerNas">
 	<div class="list-group" ng-repeat="l in listings">
 		<div class="list-group-item">
 			<h2 class="list-group-item-heading">
-				<span class="glyphicon glyphicon-chevron-right"></span> {{l.title}}
+				<span class="glyphicon glyphicon-chevron-right blue"></span> {{l.title}}
 			</h2>
 			<p class="list-group-item-text pNas">
 			<h4 class="pNas">
@@ -23,7 +23,7 @@
 			</h4>
 			</p>
 			<div align="right" class="rightNas">
-				<button ng-click="showListingForm(l)" class="btn btn-success">More
+				<button ng-click="showListingForm(l)" class="btn btn-info">More
 					details</button>
 			</div>
 
