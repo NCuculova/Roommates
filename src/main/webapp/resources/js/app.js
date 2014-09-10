@@ -1,14 +1,23 @@
 'use strict';
 
-// Declare app level module which depends on filters, and services
+
+/**
+ * Declare app level module which depends on filters and services
+ */ 
 var RM = angular.module('RM', [ 'RM.services', 'RM.directives',
 		'RM.dependencies' ]);
+
 
 RM.config([ '$routeProvider', '$httpProvider', '$locationProvider',
 		function($routeProvider, $httpProvider, $locationProvider) {
 		} ]);
 
+
+/**
+ * Function that is executed on every loading on a page.
+ */
 RM.run(function($rootScope, $location, $cookieStore, toaster, Member) {
+	//function for log out
 	$rootScope.logout = function() {
 		// delete cookie
 		$cookieStore.remove("token");
@@ -20,6 +29,7 @@ RM.run(function($rootScope, $location, $cookieStore, toaster, Member) {
 	};
 	var publicPages = [ '/', '/allListings', '/signup', '/login' ];
 
+	//GetMember function which authenticates the member and puts in on $rootScope
 	$rootScope.getMember = function(callback) {
 		var token = $cookieStore.get("token");
 		console.log(token);
@@ -40,6 +50,7 @@ RM.run(function($rootScope, $location, $cookieStore, toaster, Member) {
 				callback(data);
 		}
 	};
+	//Function for validating the token
 	var validateToken = function() {
 		var token = $cookieStore.get("token");
 		if (token) {
@@ -49,8 +60,6 @@ RM.run(function($rootScope, $location, $cookieStore, toaster, Member) {
 				// Member has valid cookie
 				if (data.success) {
 					$rootScope.member = data.member;
-					// dispatch the event 'memberLoaded' to all child scopes
-				//prasaj!	$rootScope.$broadcast('memberLoaded');
 				} else {
 					$location.path('/login');
 				}
@@ -63,7 +72,7 @@ RM.run(function($rootScope, $location, $cookieStore, toaster, Member) {
 	if (publicPages.indexOf($location.path()) == -1) {
 		validateToken();
 	}
-	// check pages
+	// check pages on navigation and reevaluates token
 	$rootScope.$on('$routeChangeStart', function(event, next, current) {
 		console.log(next);
 		if (next && !next.publicPage) {

@@ -1,6 +1,9 @@
 'use strict';
 
-/* Services */
+
+/**
+ * The services map method to the adequate RestController 
+ */
 
 angular.module('RM.services', [ 'chieffancypants.loadingBar' ]).value(
 		'version', '0.1');

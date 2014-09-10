@@ -1,5 +1,8 @@
 'use strict';
 
-/* Directives */
+
+/**
+ * Directivies
+ */
 
 angular.module('RM.directives', []);

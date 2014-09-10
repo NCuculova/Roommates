@@ -1,3 +1,7 @@
+/**
+ * Function that creates the URL path
+ */
+
 RMUtil = {
   basePath: '/roommates',
   ctx: function(path) {

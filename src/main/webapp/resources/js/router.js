@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ *  Performs the navigation of the application
+ */
+
 RM.config([ '$routeProvider', '$locationProvider',
 		function($routeProvider, $locationProvider) {
 			$routeProvider.when('/login', {

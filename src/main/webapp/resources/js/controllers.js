@@ -1,7 +1,13 @@
 'use strict';
 
-/* Controllers */
 
+/**
+ * Controllers
+ */
+
+/**
+*Controller for navigation bar
+*/
 RM.controller('HeaderController', [ '$scope', '$location',
 		function($scope, $location) {
 			$scope.isActive = function(viewLocation) {
@@ -10,7 +16,9 @@ RM.controller('HeaderController', [ '$scope', '$location',
 			};
 		} ]);
 
-
+/**
+ * Controller for memberLogin.html 
+ */
 RM.controller('MemberLoginController', [ '$scope', '$location', '$rootScope',
 		'$cookieStore', 'Member', 'toaster',
 		function($scope, $location, $rootScope, $cookieStore, Member, toaster) {
@@ -35,6 +43,9 @@ RM.controller('MemberLoginController', [ '$scope', '$location', '$rootScope',
 			};
 		} ]);
 
+/**
+ * Controller for signup.html
+ */
 RM.controller('SignupController', [ '$scope', 'Member', 'toaster',
 		function($scope, Member, toaster) {
 			$scope.success = true;
@@ -52,6 +63,9 @@ RM.controller('SignupController', [ '$scope', 'Member', 'toaster',
 			};
 		} ]);
 
+/**
+ * Controller for memberProfile.html
+ */
 RM.controller('MemberProfileController', [ '$scope', '$rootScope',
 		'MemberProfile', function($scope, $rootScope, MemberProfile) {
 			$scope.memberProfile = {};
@@ -68,6 +82,9 @@ RM.controller('MemberProfileController', [ '$scope', '$rootScope',
 			};
 		} ]);
 
+/**
+ * Controller for addFlat.html
+ */
 RM.controller('FlatController', [
 		'$scope',
 		'$rootScope',
@@ -162,6 +179,9 @@ RM.controller('FlatController', [
 			};
 		} ]);
 
+/**
+ * Controller for listings.html
+ */
 RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 		'Listing', 'Flat', function($scope, $rootScope, $modal, Listing, Flat) {
 
@@ -220,23 +240,11 @@ RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 					});
 				});
 			};
-			/*
-			$scope.customStyle = {};
-			$scope.expiredColor = function(dateTo){
-				var currentDate = new Date();
-				var endDate = new Date(Date.parse(dateTo.toString()));
-				var dateOne = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDay()); //Year, Month, Date
-			    var dateTwo = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDay()); //Year, Month, Date
-			       if (dateOne <= dateTwo) {
-			            $scope.customStyle.style = {"color":"black"};
-			        }else {
-			        	$scope.customStyle.style = {"color":"red"};
-			        }
-			       return true;
-			};*/
-
 		} ]);
 
+/**
+ * Controller for allListings.html
+ */
 RM.controller('AllListingsController', [
 		'$scope',
 		'$rootScope',
@@ -308,6 +316,9 @@ RM.controller('AllListingsController', [
 
 		} ]);
 
+/**
+ * Controller for likedListings.html
+ */
 RM.controller('BookmarkListingController', [ '$scope', '$rootScope', '$modal',
 		'Listing', 'ListLook', function($scope, $rootScope, $modal, Listing, ListLook) {
 
