@@ -9,6 +9,10 @@ import mk.ukim.finki.mp.roommates.service.FlatImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Implementation of adequate service.
+ */
+
 @Service
 public class FlatImageServiceImpl  implements FlatImageService{
 

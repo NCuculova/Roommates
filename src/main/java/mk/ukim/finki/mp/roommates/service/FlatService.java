@@ -1,8 +1,12 @@
 package mk.ukim.finki.mp.roommates.service;
 
 import java.util.List;
-
 import mk.ukim.finki.mp.roommates.model.Flat;
+
+/**
+ * Default functions defined in JPARepository.
+ * Added function explained in the adequate repository.
+ */
 
 public interface FlatService {
 	

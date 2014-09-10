@@ -4,6 +4,11 @@ import java.util.List;
 
 import mk.ukim.finki.mp.roommates.model.Member;
 
+/**
+ * Default functions defined in JPARepository.
+ * Added functions explained in the adequate repository.
+ */
+
 public interface MembersService {
 
 	public void save(Member entity);

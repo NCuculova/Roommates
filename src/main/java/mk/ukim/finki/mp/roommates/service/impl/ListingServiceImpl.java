@@ -9,6 +9,11 @@ import mk.ukim.finki.mp.roommates.repository.ListingRepository;
 import mk.ukim.finki.mp.roommates.service.ListingService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+/**
+ * Implementation of adequate service.
+ */
+
 @Service
 public class ListingServiceImpl implements ListingService{
 

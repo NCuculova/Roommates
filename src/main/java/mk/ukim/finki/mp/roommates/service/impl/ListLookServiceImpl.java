@@ -8,6 +8,11 @@ import mk.ukim.finki.mp.roommates.service.ListLookService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+/**
+ * Implementation of adequate service.
+ */
+
 @Service
 public class ListLookServiceImpl implements ListLookService{
 

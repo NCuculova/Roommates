@@ -4,6 +4,12 @@ import java.util.List;
 
 import mk.ukim.finki.mp.roommates.model.FlatImage;
 
+
+/**
+ * Default functions defined in JPARepository.
+ * Added function explained in the adequate repository.
+ */
+
 public interface FlatImageService {
 
 	public void save(FlatImage entity);

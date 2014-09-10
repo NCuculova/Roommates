@@ -7,9 +7,15 @@ import mk.ukim.finki.mp.roommates.model.Member;
 
 import org.springframework.security.crypto.codec.Hex;
 
+
 public class TokenUtils {
 	public static final String MAGIC_KEY = "obfuscate";
 
+	/**
+	 * Token creation
+	 * Input: Member
+	 * Output: String
+	 */
 	public static String createToken(Member memberInfo) {
 
 		/* Expires in one hour */
@@ -25,6 +31,11 @@ public class TokenUtils {
 		return tokenBuilder.toString();
 	}
 
+	/**
+	 * Does encription for the token
+	 * Input: Member and expiring time
+	 * Output: String
+	 */
 	public static String computeSignature(Member memberInfo, long expires) {
 
 		StringBuilder signatureBuilder = new StringBuilder();
@@ -47,6 +58,11 @@ public class TokenUtils {
 				.getBytes())));
 	}
 
+	/**
+	 * Gets the e-mail from the token
+	 * Input: Sting (token)
+	 * Output: String (e-mail)
+	 */
 	public static String getEmailFromToken(String authToken) {
 
 		if (null == authToken) {
@@ -57,6 +73,11 @@ public class TokenUtils {
 		return parts[0];
 	}
 
+	/**
+	 * Validates if the token has expired
+	 * Input: Member and token
+	 * Output: boolean
+	 */
 	public static boolean validateToken(String authToken,
 			Member memberInfo ) {
 

@@ -10,6 +10,10 @@ import mk.ukim.finki.mp.roommates.service.MembersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Implementation of adequate service.
+ */
+
 @Service
 public class MembersServiceImpl implements MembersService {
 
