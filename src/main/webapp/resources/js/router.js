@@ -2,10 +2,7 @@
 
 RM.config([ '$routeProvider', '$locationProvider',
 		function($routeProvider, $locationProvider) {
-			$routeProvider.when('/', {
-				templateUrl : 'views/index.html',
-				publicPage : true
-			}).when('/login', {
+			$routeProvider.when('/login', {
 				templateUrl : 'views/memberLogin.html',
 				controller : 'MemberLoginController',
 				//public pages
@@ -30,5 +27,5 @@ RM.config([ '$routeProvider', '$locationProvider',
 			}).when('/bookmarks', {
 				templateUrl : 'views/likedListings.html',
 				controller : 'BookmarkListingController'
-			}).otherwise({redirectTo: '/'});
+			}).otherwise({redirectTo: '/login'});
 		} ]);

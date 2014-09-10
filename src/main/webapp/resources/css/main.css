@@ -10,3 +10,18 @@ body {
 .ng-dirty.ng-valid {
 	border-color: #78fa89;
 }
+.centerNas {
+    margin-left: auto;
+    margin-right: auto;
+}
+.pNas{
+	margin-left: 40px;
+}
+
+.rightNas {
+    position: absolute;
+    right: 0px;
+    margin-right: 10px;
+    margin-top: -35px;
+
+}

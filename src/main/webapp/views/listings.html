@@ -31,10 +31,10 @@
 			<th>Delete list</th>
 		</tr>
 
-		<tr ng-repeat="list in listings" ng-show="expiredColor(list.dateTo)">
-			<td ng-style="customStyle.style">{{list.title}}</td>
-			<td ng-style="customStyle.style">{{list.dateFrom | date : 'd'}} - {{list.dateTo | date : date: "dd MMM yyyy"}}</td>
-			<td ng-style="customStyle.style">{{list.price}} euro</td>
+		<tr ng-repeat="list in listings">
+			<td>{{list.title}}</td>
+			<td>{{list.dateFrom | date : 'd'}} - {{list.dateTo | date : date: "dd MMM yyyy"}}</td>
+			<td>{{list.price}} euro</td>
 			<td><button type="button" class="btn btn-default btn-xs"
 					ng-click="editList(list.id)">Edit</button></td>
 			<td><button type="button" class="btn btn-default btn-xs"

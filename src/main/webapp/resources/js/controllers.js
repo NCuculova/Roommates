@@ -219,7 +219,7 @@ RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 					});
 				});
 			};
-			
+			/*
 			$scope.customStyle = {};
 			$scope.expiredColor = function(dateTo){
 				var currentDate = new Date();
@@ -232,7 +232,7 @@ RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 			        	$scope.customStyle.style = {"color":"red"};
 			        }
 			       return true;
-			};
+			};*/
 
 		} ]);
 
