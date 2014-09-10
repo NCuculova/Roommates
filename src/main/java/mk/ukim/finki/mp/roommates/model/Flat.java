@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+* Flat entity class with getters and setters for all properties
+*/
+
 @Entity
 @Table(name = "flats")
 public class Flat extends BaseEntity {

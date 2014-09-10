@@ -5,6 +5,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+/**
+ * Base class for giving unique IDs to entities
+ */
+
 @MappedSuperclass
 public class BaseEntity {
 	@Id

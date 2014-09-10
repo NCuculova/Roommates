@@ -8,6 +8,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+* User entity class with getters and setters for all properties
+*/
+
 @Entity
 @Table(name = "members")
 public class Member extends BaseEntity {

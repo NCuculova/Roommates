@@ -6,6 +6,10 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ListingRepository extends JpaRepository<Listing, Long> {
-	
+	/**
+	* Added function that gets all listings of a given member 
+	* Input: Member ID
+	* Output: List of Listings
+	*/
 	List<Listing> findAllByMemberId(Long id);
 }

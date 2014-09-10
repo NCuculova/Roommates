@@ -8,6 +8,10 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+* Class for the images for the flats with getters and setters for all properties
+*/
+
 @Entity
 @Table(name = "flat_images")
 public class FlatImage extends BaseEntity {

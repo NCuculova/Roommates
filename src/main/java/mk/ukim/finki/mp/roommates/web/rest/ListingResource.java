@@ -56,10 +56,4 @@ public class ListingResource {
 		return service.findAllByMemberId(id);
 	}
 	
-	/*
-	 * @RequestMapping(value = "/active", method = RequestMethod.GET, produces =
-	 * "application/json") public List<Listing> findAllByDate() { return
-	 * service.findAllByMemberId(id); }
-	 */
-
 }

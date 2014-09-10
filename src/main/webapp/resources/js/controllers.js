@@ -10,6 +10,7 @@ RM.controller('HeaderController', [ '$scope', '$location',
 			};
 		} ]);
 
+
 RM.controller('MemberLoginController', [ '$scope', '$location', '$rootScope',
 		'$cookieStore', 'Member', 'toaster',
 		function($scope, $location, $rootScope, $cookieStore, Member, toaster) {
@@ -56,7 +57,7 @@ RM.controller('MemberProfileController', [ '$scope', '$rootScope',
 			$scope.memberProfile = {};
 			$rootScope.getMember(function(data) {
 				$scope.memberProfile = MemberProfile.findByMemberId({
-					id : $rootScope.member.id
+					id : data.member.id
 				});
 			});
 			$scope.saveNewMemberProfile = function() {

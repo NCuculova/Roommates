@@ -50,7 +50,7 @@ RM.run(function($rootScope, $location, $cookieStore, toaster, Member) {
 				if (data.success) {
 					$rootScope.member = data.member;
 					// dispatch the event 'memberLoaded' to all child scopes
-					$rootScope.$broadcast('memberLoaded');
+				//prasaj!	$rootScope.$broadcast('memberLoaded');
 				} else {
 					$location.path('/login');
 				}

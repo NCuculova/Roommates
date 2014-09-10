@@ -10,6 +10,10 @@ import mk.ukim.finki.mp.roommates.util.CustomLocalDateSerializer;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+* User entity properties class with getters and setters for all properties
+*/
+
 @Entity
 @Table(name = "member_profile")
 public class MemberProfile extends BaseEntity {

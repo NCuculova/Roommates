@@ -30,7 +30,7 @@ public class ListLookResource {
 		entity.setDate(new Date());
 		ListLook list =service.findByMemberIdAndListingId(entity.getMember().getId(),entity.getListing().getId());
 		if (list == null) {
-		service.save(entity);
+			service.save(entity);
 		}
 		return entity;
 	}

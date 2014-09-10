@@ -10,6 +10,10 @@ import mk.ukim.finki.mp.roommates.util.CustomLocalDateSerializer;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+* Class for the bookmarked listings with getters and setters for all properties
+*/
+
 @Entity
 @Table(name = "listlook")
 public class ListLook extends BaseEntity {
