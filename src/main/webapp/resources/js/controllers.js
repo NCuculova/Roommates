@@ -219,6 +219,20 @@ RM.controller('ListingController', [ '$scope', '$rootScope', '$modal',
 					});
 				});
 			};
+			
+			$scope.customStyle = {};
+			$scope.expiredColor = function(dateTo){
+				var currentDate = new Date();
+				var endDate = new Date(Date.parse(dateTo.toString()));
+				var dateOne = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDay()); //Year, Month, Date
+			    var dateTwo = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDay()); //Year, Month, Date
+			       if (dateOne <= dateTwo) {
+			            $scope.customStyle.style = {"color":"black"};
+			        }else {
+			        	$scope.customStyle.style = {"color":"red"};
+			        }
+			       return true;
+			};
 
 		} ]);
 
@@ -262,7 +276,8 @@ RM.controller('AllListingsController', [
 
 			};
 
-			$scope.checkDate = function(dateTo) { //if the advertisment is expired 
+			//if the advertisment is expired 
+			$scope.checkDate = function(dateTo) { 
 				var currentDate = new Date();
 				var endDate = new Date(Date.parse(dateTo.toString()));
 				var dateOne = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDay()); //Year, Month, Date
